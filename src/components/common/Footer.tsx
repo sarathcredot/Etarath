@@ -1,0 +1,78 @@
+import React from "react";
+import Heading2 from "./Heading2";
+import Paragraph from "./Paragraph";
+import Button from "./Button";
+import Image from "next/image";
+import Link from "next/link";
+import { FaBars } from "react-icons/fa";
+
+const Footer = () => {
+  return (
+    <div className="flex flex-col items-center justify-center gap-10 bg-[#0F1114] px-[50px] py-[60px]">
+      <div
+        className=" relative min-w-full    rounded-[30px] p-[100px] overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url(/images/home/footer_banner.webp)" }}
+      >
+        <div className="relative z-10">
+          <Heading2 className="mb-[30px]">
+            Be part of <span className="text-primary">Etarath</span>, <br />{" "}
+            boost your business
+          </Heading2>
+          <Paragraph className="mb-[40px] max-w-[633px]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod. suit ipsum
+            dolor sit amet, consectetur adipiscing elit ut dem sed magna. sed do
+            eiusmod tempor incididunt.
+          </Paragraph>
+          <div className="flex items-center justify-start gap-5">
+            <Button textColor="black">Become a Vendor</Button>
+            <Button variant="outline" color="primary">
+              Become a Retailer
+            </Button>
+          </div>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-transparent pointer-events-none  "></div>
+      </div>
+
+      <div className="relative  w-full flex items-center justify-between  ">
+        <div className="flex items-center justify-between w-full h-[58px]">
+          <Link href={"/"} className="w-[170px] relative">
+            <Image
+              src="/etarath_logo.svg"
+              alt="logo"
+              width={170}
+              height={40}
+              className="object-contain cursor-pointer w-full h-full"
+            />
+          </Link>
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2   flex items-center justify-center gap-10 text-[16px] font-[600] rounded-full  px-[78px] py-[15px] transition-all duration-300 ease-in-out ">
+            <Link href={"/pricing"} className="">
+              Pricings
+            </Link>
+            <Link href={"/blog"} className="">
+              Blog
+            </Link>
+            <Link href={"/contact"} className="">
+              Contact
+            </Link>
+          </div>
+          <div>
+            <FaBars size={25} />
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full flex items-center justify-between">
+        <p className="text-[18px] font-[400]">
+          Etarath © {new Date().getFullYear()}. All rights reserved.
+        </p>
+        <p className="text-[18px] font-[400]">
+          Developed by <Link  href={'http://credot.co/'} className="underline">Credot</Link>.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;

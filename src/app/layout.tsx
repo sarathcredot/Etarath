@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Open_Sans ,Manrope} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
 
 // Plus Jakarta Sans
 const plusJakarta = Plus_Jakarta_Sans({
@@ -46,6 +47,8 @@ export default function RootLayout({
         <Navbar />
         {/* Main content */}
         <div className="mt-[80px] px-[70px] max-w-[1280px] mx-auto">{children}</div>
+        <Footer />
+
       </body>
     </html>
   );

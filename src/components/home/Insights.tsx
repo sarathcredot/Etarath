@@ -1,0 +1,79 @@
+"use client"
+
+
+import React from "react";
+import Heading2 from "../common/Heading2";
+import Button3 from "../common/Button3";
+import Image from "next/image";
+import Heading7 from "../common/Heading7";
+import ScrollContainer from "react-indiana-drag-scroll";
+
+const Insights = () => {
+  const items = [
+    {
+      title: "History",
+      description: "Lorem ipsum dolor, sedconsectetur adipiscing",
+      date: "December 4, 2022",
+      comments: 0,
+      image: "/images/home/insight_img.webp",
+    },
+    {
+      title: "Market place",
+      description: "Lorem ipsum dolor, sedconsectetur adipiscing",
+      date: "December 3, 2022",
+      comments: 0,
+      image: "/images/home/banner_img.webp",
+    },
+    {
+      title: "SALES",
+      description: "Lorem ipsum dolor, sedconsectetur adipiscing",
+      date: "December 2, 2022",
+      comments: 0,
+      image: "/images/home/plan_card_image.webp",
+    },
+    {
+      title: "SALES",
+      description: "Lorem ipsum dolor, sedconsectetur adipiscing",
+      date: "December 2, 2022",
+      comments: 0,
+      image: "/images/home/plan_card_image.webp",
+    },
+    
+  ];
+
+  return (
+    <div className="mb-[100px]">
+      <div>
+        <div className="flex justify-between items-end mb-[60px]">
+          <Heading2>Our insights</Heading2>
+          <Button3 color="white">Explore More</Button3>
+        </div>
+        <ScrollContainer vertical={false} className="w-full flex flex-nowrap gap-[25px] overflow-x-scroll ">
+          {items?.map((item, index) => (
+            <div key={index} className="min-w-[360px] flex flex-col gap-[17px]">
+              <div className="relative w-full h-[226px]">
+                <Image
+                  src={item?.image}
+                  alt="insight image"
+                  fill
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="flex flex-col gap-3 ">
+                <p className="text-[14px] font-[500] font-jakarta uppercase">
+                  {item?.title}
+                </p>
+                <Heading7 className="">{item?.description}</Heading7>
+                <p className="text-[14px] font-[400]  ">
+                  {item?.date} . {item?.comments} Comments
+                </p>
+              </div>
+            </div>
+          ))}
+        </ScrollContainer>
+      </div>
+    </div>
+  );
+};
+
+export default Insights;

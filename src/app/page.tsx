@@ -8,6 +8,7 @@ import RetailerBenefits from "@/components/home/RetailerBenefits";
 import RetailerPlans from "@/components/home/RetailerPlans";
 import VendorPlans from "@/components/home/VendorPlans";
 import Testimonials from "@/components/home/Testimonials";
+import Insights from "@/components/home/Insights";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       </div>
       <VendorPlans />
       <Testimonials />
+      <Insights />
 
     </div>
   );
