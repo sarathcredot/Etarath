@@ -2,25 +2,35 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000002;
+  --primary: #FF600F;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+   --color-primary: var(--primary);
+  --font-jakarta: var(--font-plus-jakarta);
+  --font-sans: var(--font-open-sans);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000002;
     --foreground: #ededed;
+
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-open-sans, sans-serif);
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 2px white; /* stroke width & color */
+    color: transparent;             /* hide fill */
+  }
 }
