@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
-import { Plus_Jakarta_Sans, Open_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Open_Sans ,Manrope} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 
@@ -18,6 +18,13 @@ const openSans = Open_Sans({
   display: "swap",
 });
 
+const manrope = Manrope({
+  variable: "--font-manrope", // CSS variable for Manrope
+  subsets: ["latin"],
+  display: "swap",
+});
+
+
 export const metadata: Metadata = {
   title: "Etarath",
   description: "Etarath | B2B tyre marketplace",
@@ -34,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakarta.variable} ${openSans.variable} antialiased`}
+        className={`${plusJakarta.variable} ${openSans.variable} ${manrope.variable} antialiased`}
       >
         <Navbar />
         {/* Main content */}

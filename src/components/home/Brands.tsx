@@ -1,5 +1,5 @@
 import React from "react";
-import Heading8 from "./common/Heading8";
+import Heading8 from "../common/Heading8";
 
 const Brands = () => {
   return (

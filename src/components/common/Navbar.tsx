@@ -16,10 +16,10 @@ const Navbar = () => {
             className="object-contain cursor-pointer w-full h-full"
           />
         </Link>
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2   flex items-center justify-center gap-10 text-[16px] font-[600] rounded-full bg-[#1E1F21] px-[78px] py-[15px]">
-          <Link href={"/pricing"}>Pricings</Link>
-          <Link href={"/blog"}>Blog</Link>
-          <Link href={"/contact"}>Contact</Link>
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2   flex items-center justify-center gap-10 text-[16px] font-[600] rounded-full bg-[#1E1F21] px-[78px] py-[15px] transition-all duration-300 ease-in-out hover:bg-primary ">
+          <Link href={"/pricing"} className="">Pricings</Link>
+          <Link href={"/blog"} className="">Blog</Link>
+          <Link href={"/contact"} className="">Contact</Link>
         </div>
         <div>
           <FaBars size={25} />

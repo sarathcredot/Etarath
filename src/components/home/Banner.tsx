@@ -1,7 +1,7 @@
 import React from "react";
-import Heading1 from "./common/Heading1";
-import SubHeading1 from "./common/Subheading1";
-import Button from "./common/Button";
+import Heading1 from "../common/Heading1";
+import SubHeading1 from "../common/Subheading1";
+import Button from "../common/Button";
 import Image from "next/image";
 
 const Banner = () => {
