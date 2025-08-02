@@ -66,7 +66,6 @@ const RetailerPlans = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const h5Ref = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     if (featuresRef.current && imageRef.current) {
@@ -75,15 +74,15 @@ const RetailerPlans = () => {
 
       tl.fromTo(
         imageRef.current,
-        { opacity: .9 },
+        { opacity: 0.9 },
         { opacity: 1, duration: 0.8, ease: "power2.out" }
       )
-      .fromTo(
-        h5Ref.current,
-        { opacity: 0, x: -30 },
-        { opacity: 1,x:0, duration: 0.4, ease: "power2.out" },
-        "-=1"
-      )
+        .fromTo(
+          h5Ref.current,
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" },
+          "-=1"
+        )
 
         .fromTo(
           featureItems,
@@ -109,9 +108,7 @@ const RetailerPlans = () => {
   }, [selectedPlan]);
 
   const handlePlanSelect = (plan: (typeof plans)[0]) => {
-    if (plan.id === selectedPlan.id || isAnimating) return;
-
-    //   setIsAnimating(true);
+    if (plan.id === selectedPlan.id) return;
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -159,7 +156,7 @@ const RetailerPlans = () => {
             ease: "power2.in",
           },
           "-=0.1"
-        ); 
+        );
     }
   };
 
@@ -178,11 +175,22 @@ const RetailerPlans = () => {
           <div className="flex-1 relative min-h-[400px] h-full 900:w-1/2 rounded-[20px] bg-black overflow-hidden">
             <div className="absolute inset-0 z-10  text-white px-5 py-[15px] md:px-10 md:py-[35px] 900:px-[60px] 900:py-[55px]">
               <div className="relative  h-full">
-                <Heading5 ref={h5Ref} className="mb-[15px] md:mb-5 900:mb-[30px]">What Included:</Heading5>
-                <div ref={featuresRef} className="flex flex-col gap-[15px] 900:gap-5">
+                <Heading5
+                  ref={h5Ref}
+                  className="mb-[15px] md:mb-5 900:mb-[30px]"
+                >
+                  What Included:
+                </Heading5>
+                <div
+                  ref={featuresRef}
+                  className="flex flex-col gap-[15px] 900:gap-5"
+                >
                   {selectedPlan?.features?.map((feature, index) => (
-                    <div key={index} className="flex items-center  gap-[10px] 900:gap-[15px]">
-                      <GoCheckCircleFill  className=" !min-w-5 md:w-[25px] 900:w-[30px] text-[20px] md:text-[25px] 900:text-[30px]" />
+                    <div
+                      key={index}
+                      className="flex items-center  gap-[10px] 900:gap-[15px]"
+                    >
+                      <GoCheckCircleFill className=" !min-w-5 md:w-[25px] 900:w-[30px] text-[20px] md:text-[25px] 900:text-[30px]" />
                       <Paragraph>{feature}</Paragraph>
                     </div>
                   ))}
@@ -191,7 +199,7 @@ const RetailerPlans = () => {
                   ref={buttonRef}
                   className="hidden  absolute bottom-0  left-0 sm:block mt-auto"
                 >
-                  <Button variant="outline" color="white" >
+                  <Button variant="outline" color="white">
                     See All Comparison
                   </Button>
                 </div>
@@ -218,9 +226,7 @@ const RetailerPlans = () => {
                   selectedPlan?.id === item?.id
                     ? "bg-black text-white"
                     : "bg-[#F2F2F2]"
-                } cursor-pointer rounded-[20px] px-5 md:px-[25px] 900:px-[35px] py-[15px] md:py-5 900:py-0  transition-all duration-300 ease-in-out ${
-                  isAnimating ? "pointer-events-none" : ""
-                }`}
+                } cursor-pointer rounded-[20px] px-5 md:px-[25px] 900:px-[35px] py-[15px] md:py-5 900:py-0  transition-all duration-300 ease-in-out`}
               >
                 <div>
                   <Heading7 className="mb-[9px]">{item?.title}</Heading7>
@@ -242,14 +248,12 @@ const RetailerPlans = () => {
                   </Paragraph>
                   <Heading3>{item?.price} AED</Heading3>
                 </div>
-                  <Button3
-                    color={`${
-                      selectedPlan?.id === item?.id ? "white" : "black"
-                    }`}
-                    className="absolute left-5 bottom-5 sm:!hidden"
-                  >
-                    Purchase
-                  </Button3>
+                <Button3
+                  color={`${selectedPlan?.id === item?.id ? "white" : "black"}`}
+                  className="absolute left-5 bottom-5 sm:!hidden"
+                >
+                  Purchase
+                </Button3>
               </div>
             ))}
           </div>

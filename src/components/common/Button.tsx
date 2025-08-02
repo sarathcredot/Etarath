@@ -1,11 +1,6 @@
 import { cva } from "class-variance-authority";
-import { ArrowRight, CircleArrowRight } from "lucide-react";
 import Link from "next/link";
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import { FaArrowAltCircleRight } from "react-icons/fa";
-import { IoArrowForwardCircleSharp } from "react-icons/io5";
-import { LiaArrowCircleRightSolid } from "react-icons/lia";
-import { PiArrowCircleRightFill } from "react-icons/pi";
 
 type ButtonProps = {
   variant?: "solid" | "outline";

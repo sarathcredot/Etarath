@@ -4,10 +4,8 @@ import Paragraph from "../common/Paragraph";
 import Image from "next/image";
 import Heading4 from "../common/Heading4";
 import SubHeading1 from "../common/Subheading1";
-import { BsArrowDownRight, BsArrowRight } from "react-icons/bs";
-import Heading5 from "../common/Heading5";
+import { BsArrowDownRight } from "react-icons/bs";
 import { GoCheckCircleFill } from "react-icons/go";
-import Button from "../common/Button";
 import Heading3 from "../common/Heading3";
 
 const VendorPlans = () => {

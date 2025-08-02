@@ -4,7 +4,7 @@ import Paragraph from "./Paragraph";
 import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBars, FaDribbble, FaFacebookF } from "react-icons/fa";
+import {  FaDribbble, FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io5";
 

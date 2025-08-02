@@ -8,7 +8,7 @@ import Heading7 from "../common/Heading7";
 import Button3 from "../common/Button3";
 
 const VendorBenefits = () => {
-  const [activeTab, setActiveTab] = useState<any>(0);
+  const [activeTab, setActiveTab] = useState<number|null>(0);
   const benefits = [
     {
       title: "Lorem ipsum set amet",
