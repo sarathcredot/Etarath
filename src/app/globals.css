@@ -15,6 +15,10 @@
   --font-sans: var(--font-open-sans);
   --font-manrope: var(--font-manrope);
 
+  /* custome break point */
+   --breakpoint-1180: 1180px;
+   --breakpoint-900: 900px;
+
   --animate-scroll: scroll var(--animation-duration, 40s)
     var(--animation-direction, forwards) linear infinite;
 
@@ -71,4 +75,25 @@ body {
       -1px -1px 0 #ff600f, 1px 0 0 #ff600f, -1px 0 0 #ff600f, 0 1px 0 #ff600f,
       0 -1px 0 #ff600f;
   }
+}
+
+/* .cursor {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  z-index: -1;
+  background: #ff600f;
+} */
+
+
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform;
 }

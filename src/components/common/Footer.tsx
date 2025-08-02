@@ -4,17 +4,19 @@ import Paragraph from "./Paragraph";
 import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaDribbble, FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { IoLogoInstagram } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-10 bg-[#0F1114] px-[50px] py-[60px]">
+    <div className="flex flex-col items-center justify-center gap-10 bg-[#0F1114] px-5 md:px-[30px] lg:px-[50px] pt-8 md:pt-10 lg:pt-[60px] pb-[60px]">
       <div
-        className=" relative min-w-full    rounded-[30px] p-[100px] overflow-hidden bg-cover bg-center bg-no-repeat"
+        className=" relative min-w-full  rounded-[20px]  md:rounded-[30px] p-5 md:p-[50px] lg:p-[100px] overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url(/images/home/footer_banner.webp)" }}
       >
         <div className="relative z-10">
-          <Heading2 className="mb-[30px]">
+          <Heading2 className="mb-5 md:mb-[30px]">
             Be part of <span className="text-primary">Etarath</span>, <br />{" "}
             boost your business
           </Heading2>
@@ -25,7 +27,7 @@ const Footer = () => {
             dolor sit amet, consectetur adipiscing elit ut dem sed magna. sed do
             eiusmod tempor incididunt.
           </Paragraph>
-          <div className="flex items-center justify-start gap-5">
+          <div className="flex flex-col sm:flex-row items-center justify-start gap-5">
             <Button textColor="black">Become a Vendor</Button>
             <Button variant="outline" color="primary">
               Become a Retailer
@@ -36,8 +38,8 @@ const Footer = () => {
       </div>
 
       <div className="relative  w-full flex items-center justify-between  ">
-        <div className="flex items-center justify-between w-full h-[58px]">
-          <Link href={"/"} className="w-[170px] relative">
+        <div className="flex flex-col md:flex-row items-center max-md:gap-4 justify-between w-full   md:h-[58px]">
+          <Link href={"/"} className="w-[130px] h-[30px] md:w-[170px] md:h-[40px] relative">
             <Image
               src="/etarath_logo.svg"
               alt="logo"
@@ -46,7 +48,7 @@ const Footer = () => {
               className="object-contain cursor-pointer w-full h-full"
             />
           </Link>
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2   flex items-center justify-center gap-10 text-[16px] font-[600] rounded-full  px-[78px] py-[15px] transition-all duration-300 ease-in-out ">
+          <div className="md:absolute left-1/2 top-1/2 md:-translate-x-1/2 md:-translate-y-1/2   flex items-center justify-center gap-7 lg:gap-10 text-[16px] font-[600] rounded-full   py-[15px] transition-all duration-300 ease-in-out ">
             <Link href={"/pricing"} className="">
               Pricings
             </Link>
@@ -57,18 +59,33 @@ const Footer = () => {
               Contact
             </Link>
           </div>
-          <div>
-            <FaBars size={25} />
+          <div className="flex items-center justify-center max-md:mt-2 gap-5">
+            <div className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out">
+              <FaFacebookF size={16} />
+            </div>
+            <div className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out">
+              <FaXTwitter size={16} />
+            </div>
+            <div className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out">
+              <FaDribbble size={16} />
+            </div>
+            <div className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out">
+              <IoLogoInstagram size={16} />
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-between">
-        <p className="text-[18px] font-[400]">
+      <div className="w-full flex flex-col max-md:gap-3 md:flex-row items-center justify-between">
+        <p className="max-md:text-center text-[18px] font-[400]">
           Etarath © {new Date().getFullYear()}. All rights reserved.
         </p>
-        <p className="text-[18px] font-[400]">
-          Developed by <Link  href={'http://credot.co/'} className="underline">Credot</Link>.
+        <p className="max-md:text-center text-[18px] font-[400]">
+          Developed by{" "}
+          <Link href={"http://credot.co/"} className="underline">
+            Credot
+          </Link>
+          .
         </p>
       </div>
     </div>

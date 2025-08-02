@@ -58,7 +58,7 @@ const FAQ = () => {
           } transition-all duration-300 ease-in-out`}
         >
           <div 
-            className="flex items-center gap-5 py-[22px] cursor-pointer  transition-all duration-200"
+            className="group flex items-center gap-5 py-4 md:py-[22px] cursor-pointer  transition-all duration-200"
             onClick={() =>
               setActiveQuestionIndex(activeQuestionIndex === index ? null : index)
             }
@@ -66,15 +66,13 @@ const FAQ = () => {
             <div className="transition-transform duration-300 ease-in-out">
               {activeQuestionIndex === index ? (
                 <FaMinus 
-                  size={20} 
                   color="#FFF" 
-                  className="transform rotate-0 transition-transform duration-300 ease-in-out" 
+                  className=" md:text-[20px] transform rotate-0 transition-transform duration-300 ease-in-out" 
                 />
               ) : (
                 <FaPlus 
-                  size={20} 
                   color="#FFF" 
-                  className="transform rotate-0 transition-transform duration-300 ease-in-out hover:rotate-90" 
+                  className=" md:text-[20px] transform rotate-0 transition-transform duration-300 ease-in-out group-hover:rotate-90" 
                 />
               )}
             </div>

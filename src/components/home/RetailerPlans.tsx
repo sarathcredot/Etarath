@@ -165,8 +165,8 @@ const RetailerPlans = () => {
 
   return (
     <div className="">
-      <div className="flex flex-col gap-[60px] max-w-[1280px] mx-auto px-[70px] pt-[90px] pb-[100px] text-black">
-        <div className="  flex flex-col items-center justify-center gap-[30px]">
+      <div className="flex flex-col gap-[30px] md:gap-10 900:gap-[60px] max-w-[1280px] mx-auto  px-5 md:px-10 lg:px-[70px] pt-10 md:pt-[70px]  lg:pt-[90px] pb-[50px] md:pb-[80px] lg:pb-[100px] text-black">
+        <div className="  flex flex-col items-center justify-center gap-[10px] md:gap-5 lg:gap-[30px]">
           <Heading2>Choose idle plan for Retailer</Heading2>
           <Paragraph className="text-center max-w-[730px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -174,24 +174,24 @@ const RetailerPlans = () => {
             sit amet.
           </Paragraph>
         </div>
-        <div className="h-[610px] flex items-center justify-center gap-5">
-          <div className="flex-1 relative min-h-[300px] h-full w-1/2 rounded-[20px] bg-black overflow-hidden">
-            <div className="absolute inset-0 z-10  text-white px-[60px] py-[55px]">
+        <div className="900:h-[610px] flex-col 900:flex-row flex 900:items-center justify-center gap-5">
+          <div className="flex-1 relative min-h-[400px] h-full 900:w-1/2 rounded-[20px] bg-black overflow-hidden">
+            <div className="absolute inset-0 z-10  text-white px-5 py-[15px] md:px-10 md:py-[35px] 900:px-[60px] 900:py-[55px]">
               <div className="relative  h-full">
-                <Heading5 ref={h5Ref} className="mb-[30px]">What Included:</Heading5>
-                <div ref={featuresRef} className="flex flex-col gap-5">
+                <Heading5 ref={h5Ref} className="mb-[15px] md:mb-5 900:mb-[30px]">What Included:</Heading5>
+                <div ref={featuresRef} className="flex flex-col gap-[15px] 900:gap-5">
                   {selectedPlan?.features?.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-[15px]">
-                      <GoCheckCircleFill size={30} />
+                    <div key={index} className="flex items-center  gap-[10px] 900:gap-[15px]">
+                      <GoCheckCircleFill  className=" !min-w-5 md:w-[25px] 900:w-[30px] text-[20px] md:text-[25px] 900:text-[30px]" />
                       <Paragraph>{feature}</Paragraph>
                     </div>
                   ))}
                 </div>
                 <div
                   ref={buttonRef}
-                  className="absolute bottom-0 left-0 block mt-auto"
+                  className="hidden  absolute bottom-0  left-0 sm:block mt-auto"
                 >
-                  <Button variant="outline" color="white">
+                  <Button variant="outline" color="white" >
                     See All Comparison
                   </Button>
                 </div>
@@ -214,11 +214,11 @@ const RetailerPlans = () => {
               <div
                 key={index}
                 onClick={() => handlePlanSelect(item)}
-                className={`flex-1 flex items-center justify-between gap-[36px] ${
+                className={`relative flex-1 flex flex-col sm:flex-row   sm:items-center justify-between  900:gap-[35px]  ${
                   selectedPlan?.id === item?.id
                     ? "bg-black text-white"
                     : "bg-[#F2F2F2]"
-                } cursor-pointer rounded-[20px] px-[35px]  transition-all duration-300 ease-in-out ${
+                } cursor-pointer rounded-[20px] px-5 md:px-[25px] 900:px-[35px] py-[15px] md:py-5 900:py-0  transition-all duration-300 ease-in-out ${
                   isAnimating ? "pointer-events-none" : ""
                 }`}
               >
@@ -231,16 +231,25 @@ const RetailerPlans = () => {
                     color={`${
                       selectedPlan?.id === item?.id ? "white" : "black"
                     }`}
+                    className="!hidden sm:!block"
                   >
                     Purchase
                   </Button3>
                 </div>
                 <div className="flex flex-col items-end">
-                  <Paragraph className="text-primary whitespace-nowrap">
+                  <Paragraph className="text-primary sm:whitespace-nowrap">
                     {item?.freeTrial}days free, then monthly
                   </Paragraph>
                   <Heading3>{item?.price} AED</Heading3>
                 </div>
+                  <Button3
+                    color={`${
+                      selectedPlan?.id === item?.id ? "white" : "black"
+                    }`}
+                    className="absolute left-5 bottom-5 sm:!hidden"
+                  >
+                    Purchase
+                  </Button3>
               </div>
             ))}
           </div>

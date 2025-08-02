@@ -20,7 +20,7 @@ type ButtonProps = {
 };
 
 const button = cva(
-  "relative inline-flex items-center justify-center  rounded-full px-[58px] h-[48px] transition-colors  text-[16px] font-[600] cursor-pointer group overflow-hidden",
+  "relative inline-flex items-center justify-center  rounded-full px-5 md:px-[45px] lg:px-[58px] h-[48px] transition-colors text-[15px] md:text-[16px] font-[600] cursor-pointer group overflow-hidden transition-all duration-300 ease-in-out",
   {
     variants: {
       variant: {
@@ -49,14 +49,15 @@ const button = cva(
       color: "primary",
       textColor: "white",
     },
-  }
+  },
+
 );
 
 const Button = ({
   variant,
   color,
   textColor,
-  className,
+  className="",
   onClick,
   disabled = false,
   type = "button",
@@ -75,7 +76,7 @@ const Button = ({
             {children}{" "}
             <span
               className={
-                "absolute top-[6px] right-[6px] p-0 group-hover:translate-x-[60px]  transition-transform duration-500 ease-in-out"
+                "max-md:hidden absolute top-[6px] right-[6px] p-0 group-hover:translate-x-[60px]  transition-transform duration-500 ease-in-out"
               }
             >
               <BsArrowRightCircleFill size={31} />
@@ -93,7 +94,7 @@ const Button = ({
             {children}{" "}
             <span
               className={
-                "absolute top-[6px] right-[6px] p-0 group-hover:translate-x-[60px]  transition-transform duration-500 ease-in-out"
+                "max-md:hidden absolute top-[6px] right-[6px] p-0 group-hover:translate-x-[60px]  transition-transform duration-500 ease-in-out"
               }
             >
               <BsArrowRightCircleFill size={31} />

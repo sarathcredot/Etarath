@@ -75,9 +75,9 @@ const Testimonials = () => {
   const component = testimonials.map((item, index) => (
     <div
       key={index}
-      className="w-[380px]  flex flex-col  justify-center gap-5  border border-white rounded-[25px] px-[30px] py-[25px]"
+      className=" w-[380px]  flex flex-col  justify-center gap-3 md:gap-5  border border-white rounded-[15px] md:rounded-[25px] px-[20px] md:px-[30px] py-[15px] md:py-[25px]"
     >
-      <FaQuoteLeft size={30} />
+      <FaQuoteLeft className="text-[25px] md:text-[30px]" />
       <p className="text-[15px] font-[400]">{item?.message}</p>
       <div className="flex items-center gap-[10px]">
         <Image src={item?.avatar} alt="" width={40} height={40} className="rounded-full" />
@@ -94,7 +94,7 @@ const Testimonials = () => {
   ));
 
   return (
-    <div className="mb-[100px]">
+    <div className="mb-[50px] md:mb-[80px] lg:mb-[100px]">
       <div>
         <div className="mb-[60px] flex flex-col items-center justify-center gap-5">
           <Heading2 className="text-center">

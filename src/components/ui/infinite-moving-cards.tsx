@@ -8,21 +8,27 @@ export const InfiniteMovingCards = ({
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
+  mask = false,
+  isBrand = false,
   className,
 }: {
   component: React.ReactNode;
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
+  mask?: boolean;
+  isBrand?: boolean;
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const [start, setStart] = useState(false);
+  const [highlightIndex, setHighlightIndex] = useState<number | null>(null);
 
   useEffect(() => {
     addAnimation();
+    startHighlightCheck();
   }, []);
-  const [start, setStart] = useState(false);
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
@@ -65,12 +71,46 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+
+  // Highlight center item
+  const startHighlightCheck = () => {
+    const checkHighlight = () => {
+      if (!containerRef.current || !scrollerRef.current) return;
+
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+
+      let closestIndex = null;
+      let closestDistance = Infinity;
+
+      Array.from(scrollerRef.current.children).forEach((child, index) => {
+        const childRect = child.getBoundingClientRect();
+        const childCenter = childRect.left + childRect.width / 2;
+        const distance = Math.abs(containerCenter - childCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      if (closestIndex !== highlightIndex) {
+        setHighlightIndex(closestIndex);
+      }
+
+      requestAnimationFrame(checkHighlight);
+    };
+
+    requestAnimationFrame(checkHighlight);
+  };
+
   return (
     <div
       ref={containerRef}
-    //   [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]
       className={cn(
         "scroller relative z-20 w-full overflow-hidden ",
+        mask &&
+          "[mask-image:linear-gradient(to_right,transparent,white_45%,white_55%,transparent)]",
         className
       )}
     >
@@ -82,8 +122,20 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {component}
-        
+        {isBrand
+          ? React.Children.map(component, (child, index) => (
+              <li
+                className={cn(
+                  highlightIndex === index
+                    ? "scale-90 md:scale-125 brightness-150"
+                    : " scale-90 md:scale-100 brightness-90",
+                  "transition-transform duration-500"
+                )}
+              >
+                {child}
+              </li>
+            ))
+          : component}
       </ul>
     </div>
   );

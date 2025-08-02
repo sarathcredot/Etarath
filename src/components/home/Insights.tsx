@@ -42,13 +42,13 @@ const Insights = () => {
   ];
 
   return (
-    <div className="mb-[100px]">
+    <div className="mb-[50px] md:mb-[80px] lg:mb-[100px]">
       <div>
-        <div className="flex justify-between items-end mb-[60px]">
+        <div className="flex justify-between items-end mb-[30px] md:mb-10 lg:mb-[60px]">
           <Heading2>Our insights</Heading2>
-          <Button3 color="white">Explore More</Button3>
+          <Button3 className="!hidden md:!flex" color="white">Explore More</Button3>
         </div>
-        <ScrollContainer vertical={false} className="w-full flex flex-nowrap gap-[25px] overflow-x-scroll ">
+        <ScrollContainer vertical={false} className="w-full flex flex-nowrap gap-[15px] md:gap-[25px] overflow-x-scroll ">
           {items?.map((item, index) => (
             <div key={index} className="min-w-[360px] flex flex-col gap-[17px]">
               <div className="relative w-full h-[226px]">
@@ -60,7 +60,7 @@ const Insights = () => {
                 />
               </div>
               <div className="flex flex-col gap-3 ">
-                <p className="text-[14px] font-[500] font-jakarta uppercase">
+                <p className="text-[13px] md:text-[14px] font-[500] font-jakarta uppercase">
                   {item?.title}
                 </p>
                 <Heading7 className="">{item?.description}</Heading7>

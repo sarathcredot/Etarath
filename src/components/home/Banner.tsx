@@ -11,13 +11,13 @@ const Banner = () => {
         <Heading1 className="text-center mb-[30px]">
           Introducing <span className="text-primary">Etarath </span>
           <br /> for you, a b2B tyre selling
-          <br /> platform
+          <br className="max-md:hidden " /> platform
         </Heading1>
-        <SubHeading1 className="text-center mb-[40px] mx-[16%]">
+        <SubHeading1 className="text-center mb-[40px] md:mx-[10%] lg:mx-[16%]">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </SubHeading1>
-        <div className="flex items-center justify-center gap-5 ">
+        <div className="flex items-center justify-center gap-[15px] md:gap-5 ">
           <Button
             type="link"
             href="/"
@@ -33,7 +33,7 @@ const Banner = () => {
         </div>
       </div>
       <div className="relative my-[60px]">
-        <div className="relative w-full h-[500px] rounded-[40px] overflow-hidden">
+        <div className="relative w-full h-[300px] md:h-[500px] rounded-[20px] md:rounded-[30px] lg:rounded-[40px] overflow-hidden">
           <Image
             src="/home/banner_img.webp"
             alt="banner image"
@@ -43,7 +43,7 @@ const Banner = () => {
           />
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-        <Image
+          <Image
             src="/etarath_logo.svg"
             alt="logo"
             width={560}

@@ -49,14 +49,14 @@ const VendorBenefits = () => {
   ];
 
   return (
-    <div className="mb-[100px]">
+    <div className=" mb-[50px] md:mb-[80px] lg:mb-[100px]">
       <div className="flex flex-col gap-[60px]">
-        <div className="flex justify-between items-center gap-[60px]">
-          <Heading2 className="w-[50%]">
-            Benefits of Becoming an{" "}
+        <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-5 md:gap-[30px] lg:gap-[60px]">
+          <Heading2 className="lg:w-[50%]">
+            Benefits of Becoming an{" "} <br className="hidden md:block lg:hidden"/>
             <span className="text-primary">Etarath</span> Vendor
           </Heading2>
-          <Paragraph className="w-[50%]">
+          <Paragraph className="lg:w-[50%]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
             sit amet, consectetur adipiscing elit, sed do eiusmod. suit ipsum
@@ -65,25 +65,25 @@ const VendorBenefits = () => {
             elit suit labore et magna adipisicing dem sed dolor amet.{" "}
           </Paragraph>
         </div>
-        <div className="flex flex-nowrap justify-center  gap-5">
+        <div className="flex flex-col lg:flex-row flex-nowrap justify-center  gap-5">
           {benefits?.map((item, index) => (
             <div
               key={index}
 
               onClick={() => setActiveTab(activeTab === index ? null : index)}
-              className={`relative  h-[470px] flex items-center justify-center border border-white rounded-[20px] group cursor-pointer hover:bg-primary hover:border-primary  ${
-                activeTab === index ? "flex-col justify-start items-start !w-[500px] group bg-primary !border-primary px-[45px] py-10" : "flex-1"
+              className={`relative  lg:h-[470px] flex  items-center lg:justify-center border border-white rounded-[15px] md:rounded-[20px] group cursor-pointer hover:bg-primary hover:border-primary  ${
+                activeTab === index ? "flex-col justify-start items-start lg:!w-[500px] group bg-primary !border-primary px-5 py-[15px] lg:px-[45px] lg:py-10" : "flex-1 px-5 py-[15px]"
               }    transition-all duration-500 ease-in-out`}
             >
                 {activeTab === index?(
                     <>
-                    <Heading7 className="mb-5">{item?.heading}</Heading7>
-                    <Paragraph className="mb-[70px]">{item?.description}</Paragraph>
+                    <Heading7 className="mb-[15px] md:mb-5">{item?.heading}</Heading7>
+                    <Paragraph className="mb-5 md:mb-10 lg:mb-[70px]">{item?.description}</Paragraph>
                     <Button3 color="white">Become a Vendor</Button3>
                     </>
                 ):(
 
-                    <Heading6 className="absolute transform -rotate-90 whitespace-nowrap">
+                    <Heading6 className="lg:absolute transform lg:-rotate-90 lg:whitespace-nowrap">
                     {item?.title}
                     </Heading6>
                 )}

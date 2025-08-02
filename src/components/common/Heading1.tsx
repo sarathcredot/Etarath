@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Heading1 = ({ className = "", children }: Props) => {
-  return <h1 className={` text-[56px] font-[600] leading-[76px] capitalize font-jakarta  ${className}`}>{children}</h1>;
+  return <h1 className={` text-[28px] md:text-[48px] lg:text-[56px] font-[600] md:leading-[65px] lg:leading-[76px] capitalize font-jakarta  ${className}  transition-all duration-300 ease-in-out `}>{children}</h1>;
 };
 
 export default Heading1;
