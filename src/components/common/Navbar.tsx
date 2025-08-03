@@ -8,6 +8,10 @@ import gsap from "gsap";
 const Navbar = () => {
   const menuRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const navbarRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   /* Cursor animation */
@@ -67,48 +71,214 @@ const Navbar = () => {
     };
   }, []);
 
-  /* GSAP Offcanvas Slide */
+  /* Navbar Reveal Animation */
   useEffect(() => {
-    const offcanvas = document.getElementById("mobile-offcanvas");
-    if (!offcanvas) return;
+    if (!navbarRef.current || !logoRef.current || !buttonRef.current || !hamburgerRef.current) return;
 
-    if (menuOpen) {
-      gsap.to(offcanvas, { x: 0, duration: 0.3, ease: "power3.out" });
-    } else {
-      gsap.to(offcanvas, { x: "100%", duration: 0.3, ease: "power3.in" });
+    const tl = gsap.timeline();
+    
+    // Set initial states
+    gsap.set([logoRef.current, buttonRef.current, hamburgerRef.current], {
+      y: -50,
+      opacity: 0,
+    });
+
+    if (menuRef.current) {
+      gsap.set(menuRef.current, {
+        y: -30,
+        opacity: 0,
+        scale: 0.9,
+      });
+      
+      // Set initial state for menu links
+      const menuLinks = menuRef.current.querySelectorAll("a");
+      gsap.set(menuLinks, {
+        y: -20,
+        opacity: 0,
+      });
     }
-  }, [menuOpen]);
 
-  /* Lock body scroll when menu is open */
+    // Set navbar background with subtle entrance
+    gsap.set(navbarRef.current, {
+      backdropFilter: "blur(0px)",
+      backgroundColor: "rgba(0, 0, 0, 0)",
+    });
+
+    // Animate navbar background
+    tl.to(navbarRef.current, {
+      backdropFilter: "blur(10px)",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      duration: 0.8,
+      ease: "power2.out",
+    })
+    // Animate logo
+    .to(logoRef.current, {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: "back.out(1.7)",
+    }, "-=0.4")
+    // Animate desktop menu
+    .to(menuRef.current, {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 0.7,
+      ease: "back.out(1.2)",
+    }, "-=0.3");
+
+    // Animate menu links with stagger
+    if (menuRef.current) {
+      const menuLinks = menuRef.current.querySelectorAll("a");
+      tl.to(menuLinks, {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power2.out",
+      }, "-=0.1");
+    }
+
+    // Animate button and hamburger
+    tl.to([buttonRef.current, hamburgerRef.current], {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "back.out(1.7)",
+    }, "-=0.5");
+
+  }, []);
+
+  /* Scroll-based navbar enhancement */
+  useEffect(() => {
+    if (!navbarRef.current) return;
+
+    let lastScrollY = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      const scrollThreshold = 100;
+
+      if (currentScrollY > scrollThreshold) {
+        // Enhanced backdrop blur and background when scrolled
+        gsap.to(navbarRef.current, {
+          backdropFilter: "blur(20px)",
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        
+        // Slight scale animation on scroll direction change
+        if (scrollingDown !== (lastScrollY > currentScrollY)) {
+          gsap.to(navbarRef.current, {
+            scale: scrollingDown ? 0.98 : 1,
+            duration: 0.2,
+            ease: "power2.out",
+          });
+        }
+      } else {
+        // Return to original state
+        gsap.to(navbarRef.current, {
+          backdropFilter: "blur(10px)",
+          backgroundColor: "rgba(0, 0, 0, 0.05)",
+          borderBottom: "1px solid transparent",
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  /* Enhanced GSAP Offcanvas Animation */
   useEffect(() => {
     const offcanvas = document.getElementById("mobile-offcanvas");
     if (!offcanvas) return;
 
+    const offcanvasLinks = offcanvas.querySelectorAll("a");
+    const offcanvasButton = offcanvas.querySelector("div:last-child");
+
     if (menuOpen) {
-      gsap.to(offcanvas, { x: 0, duration: 0.3, ease: "power3.out" });
+      // Set initial states for staggered animation
+      gsap.set(offcanvasLinks, { x: 50, opacity: 0 });
+      gsap.set(offcanvasButton, { y: 30, opacity: 0 });
+
+      // Create timeline for opening animation
+      const tl = gsap.timeline();
+      
+      tl.to(offcanvas, { 
+        x: 0, 
+        duration: 0.4, 
+        ease: "power3.out" 
+      })
+      .to(offcanvasLinks, {
+        x: 0,
+        opacity: 1,
+        duration: 0.4,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
+      }, "-=0.2")
+      .to(offcanvasButton, {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: "back.out(1.7)",
+      }, "-=0.3");
+
       window.document.body.style.overflow = "hidden";
     } else {
-      gsap.to(offcanvas, { x: "100%", duration: 0.3, ease: "power3.in" });
+      // Closing animation
+      const tl = gsap.timeline();
+      
+      tl.to([offcanvasLinks, offcanvasButton], {
+        x: 30,
+        opacity: 0,
+        duration: 0.2,
+        stagger: 0.05,
+        ease: "power2.in",
+      })
+      .to(offcanvas, { 
+        x: "100%", 
+        duration: 0.3, 
+        ease: "power3.in" 
+      }, "-=0.1");
+
       window.document.body.style.overflow = "";
     }
   }, [menuOpen]);
 
   return (
     <>
-      <div className="relative w-full flex items-center justify-between p-5 md:px-[30px] lg:px-[60px] md:py-[25px] transition-all duration-300 ease-in-out">
+      <div 
+        ref={navbarRef}
+        className="relative w-full flex items-center justify-between p-5 md:px-[30px] lg:px-[60px] md:py-[25px] transition-all duration-300 ease-in-out"
+      >
         <div className="flex items-center justify-between w-full md:h-[58px]">
           {/* Logo */}
-          <Link
-            href={"/"}
-            className="w-[130px] h-[30px] md:w-[170px] md:h-[40px] relative"
-          >
-            <Image
-              src="/etarath_logo.svg"
-              alt="logo"
-              fill
-              className="object-contain cursor-pointer w-full h-full z-[101]"
-            />
-          </Link>
+          <div ref={logoRef}>
+            <Link
+              href={"/"}
+              className="w-[130px] h-[30px] md:w-[170px] md:h-[40px] relative block"
+            >
+              <Image
+                src="/etarath_logo.svg"
+                alt="logo"
+                fill
+                className="object-contain cursor-pointer w-full h-full z-[101]"
+              />
+            </Link>
+          </div>
 
           {/* Desktop menu */}
           <div className="navbar_menu absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -126,6 +296,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             {/* Animated Hamburger */}
             <button
+              ref={hamburgerRef}
               onClick={() => setMenuOpen((prev) => !prev)}
               className="relative group md:hidden z-[101]"
             >
@@ -173,14 +344,16 @@ const Navbar = () => {
               </div>
             </button>
 
-            <Button
-              type="link"
-              href="/"
-              className="!hidden md:!inline-flex"
-              textColor="black"
-            >
-              Get Started
-            </Button>
+            <div ref={buttonRef}>
+              <Button
+                type="link"
+                href="/"
+                className="!hidden md:!inline-flex"
+                textColor="black"
+              >
+                Get Started
+              </Button>
+            </div>
           </div>
         </div>
 

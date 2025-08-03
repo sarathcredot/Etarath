@@ -164,7 +164,7 @@ const RetailerPlans = () => {
     <div className="">
       <div className="flex flex-col gap-[30px] md:gap-10 900:gap-[60px] max-w-[1280px] mx-auto  px-5 md:px-10 lg:px-[70px] pt-10 md:pt-[70px]  lg:pt-[90px] pb-[50px] md:pb-[80px] lg:pb-[100px] text-black">
         <div className="  flex flex-col items-center justify-center gap-[10px] md:gap-5 lg:gap-[30px]">
-          <Heading2>Choose idle plan for Retailer</Heading2>
+          <Heading2 className="text-center">Choose idle plan for Retailer</Heading2>
           <Paragraph className="text-center max-w-[730px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
@@ -237,7 +237,7 @@ const RetailerPlans = () => {
                     color={`${
                       selectedPlan?.id === item?.id ? "white" : "black"
                     }`}
-                    className="!hidden sm:!block"
+                    className="!hidden sm:!flex"
                   >
                     Purchase
                   </Button3>

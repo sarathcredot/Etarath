@@ -77,10 +77,10 @@ const Footer = () => {
       </div>
 
       <div className="w-full flex flex-col max-md:gap-3 md:flex-row items-center justify-between">
-        <p className="max-md:text-center text-[18px] font-[400]">
+        <p className="max-md:text-center text-[15px] md:text-[18px] font-[400]">
           Etarath © {new Date().getFullYear()}. All rights reserved.
         </p>
-        <p className="max-md:text-center text-[18px] font-[400]">
+        <p className="max-md:text-center text-[15px] md:text-[18px] font-[400]">
           Developed by{" "}
           <Link href={"http://credot.co/"} className="underline">
             Credot
