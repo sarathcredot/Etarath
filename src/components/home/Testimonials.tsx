@@ -117,7 +117,7 @@ const Testimonials = () => {
             component={component}
             speed="slow"
             direction={"right"}
-          />
+          />   
         </div>
       </div>
     </div>
