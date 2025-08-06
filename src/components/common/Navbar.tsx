@@ -98,34 +98,26 @@ const Navbar = () => {
       });
     }
 
-    // Set navbar background with subtle entrance
-    gsap.set(navbarRef.current, {
-      backdropFilter: "blur(0px)",
-      backgroundColor: "rgba(0, 0, 0, 0)",
-    });
+   ;
 
-    // Animate navbar background
-    tl.to(navbarRef.current, {
-      backdropFilter: "blur(10px)",
-      backgroundColor: "rgba(0, 0, 0, 0.05)",
-      duration: 0.8,
-      ease: "power2.out",
-    })
     // Animate logo
+    tl
     .to(logoRef.current, {
       y: 0,
       opacity: 1,
+      zIndex: 202,
       duration: 0.6,
-      ease: "back.out(1.7)",
-    }, "-=0.4")
+      delay: 0.2,
+      ease: "power2.out",
+    })
     // Animate desktop menu
     .to(menuRef.current, {
       y: 0,
       opacity: 1,
       scale: 1,
       duration: 0.7,
-      ease: "back.out(1.2)",
-    }, "-=0.3");
+      ease: "ease",
+    }, "-=0.6");
 
     // Animate menu links with stagger
     if (menuRef.current) {
@@ -146,7 +138,7 @@ const Navbar = () => {
       duration: 0.6,
       stagger: 0.1,
       ease: "back.out(1.7)",
-    }, "-=0.5");
+    }, "-=0.3");
 
   }, []);
 
@@ -162,14 +154,7 @@ const Navbar = () => {
       const scrollThreshold = 100;
 
       if (currentScrollY > scrollThreshold) {
-        // Enhanced backdrop blur and background when scrolled
-        gsap.to(navbarRef.current, {
-          backdropFilter: "blur(20px)",
-          backgroundColor: "rgba(0, 0, 0, 0.1)",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-          duration: 0.3,
-          ease: "power2.out",
-        });
+        
         
         // Slight scale animation on scroll direction change
         if (scrollingDown !== (lastScrollY > currentScrollY)) {
@@ -182,9 +167,6 @@ const Navbar = () => {
       } else {
         // Return to original state
         gsap.to(navbarRef.current, {
-          backdropFilter: "blur(10px)",
-          backgroundColor: "rgba(0, 0, 0, 0.05)",
-          borderBottom: "1px solid transparent",
           scale: 1,
           duration: 0.3,
           ease: "power2.out",
@@ -269,13 +251,13 @@ const Navbar = () => {
           <div ref={logoRef}>
             <Link
               href={"/"}
-              className="w-[130px] h-[30px] md:w-[170px] md:h-[40px] relative block"
+              className="w-[130px] h-[30px] md:w-[170px] md:h-[40px] relative block "
             >
               <Image
                 src="/etarath_logo.svg"
                 alt="logo"
                 fill
-                className="object-contain cursor-pointer w-full h-full z-[101]"
+                className="object-contain cursor-pointer w-full h-full !z-[101]"
               />
             </Link>
           </div>
