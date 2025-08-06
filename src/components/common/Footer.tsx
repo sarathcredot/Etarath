@@ -1,16 +1,62 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Heading2 from "./Heading2";
 import Paragraph from "./Paragraph";
 import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
-import {  FaDribbble, FaFacebookF } from "react-icons/fa";
+import { FaDribbble, FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io5";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const tl = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          end: "bottom 100%",
+          toggleActions: "play none none reverse",
+        },
+      })
+      .fromTo(
+        containerRef.current,
+        { opacity: 0, y: 100 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      )
+      .fromTo(
+        containerRef.current?.children,
+        { opacity: 0, scale: 0.9, stagger: 0.2 },
+        {
+          opacity: 1,
+          scale: 1,
+          stagger: 0.2,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        "-=.1"
+      );
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, []);
   return (
-    <div className="flex flex-col items-center justify-center gap-10 bg-[#0F1114] px-5 md:px-[30px] lg:px-[50px] pt-8 md:pt-10 lg:pt-[60px] pb-[60px]">
+    <div
+      ref={containerRef}
+      className="flex flex-col items-center justify-center gap-10 bg-[#0F1114] px-5 md:px-[30px] lg:px-[50px] pt-8 md:pt-10 lg:pt-[60px] pb-[60px]"
+    >
       <div
         className=" relative min-w-full  rounded-[20px]  md:rounded-[30px] p-5 md:p-[50px] lg:p-[100px] overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url(/images/home/footer_banner.webp)" }}
@@ -39,7 +85,10 @@ const Footer = () => {
 
       <div className="relative  w-full flex items-center justify-between  ">
         <div className="flex flex-col md:flex-row items-center max-md:gap-4 justify-between w-full   md:h-[58px]">
-          <Link href={"/"} className="w-[130px] h-[30px] md:w-[170px] md:h-[40px] relative">
+          <Link
+            href={"/"}
+            className="w-[130px] h-[30px] md:w-[170px] md:h-[40px] relative"
+          >
             <Image
               src="/etarath_logo.svg"
               alt="logo"

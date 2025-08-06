@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
 import Heading2 from "../common/Heading2";
 import Paragraph from "../common/Paragraph";
 import Image from "next/image";
@@ -11,6 +10,10 @@ import Heading3 from "../common/Heading3";
 import Heading5 from "../common/Heading5";
 import { GoCheckCircleFill } from "react-icons/go";
 import Button from "../common/Button";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const RetailerPlans = () => {
   const plans = [
@@ -66,6 +69,11 @@ const RetailerPlans = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const h5Ref = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heading2Ref = useRef<HTMLDivElement>(null);
+  const paragraphRef = useRef<HTMLDivElement>(null);
+  const featImgRef = useRef<HTMLDivElement>(null);
+  const featCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (featuresRef.current && imageRef.current) {
@@ -160,19 +168,86 @@ const RetailerPlans = () => {
     }
   };
 
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const tl = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          end: "bottom 100%",
+          toggleActions: "play none none reverse",
+        },
+      })
+      .fromTo(
+        containerRef.current,
+        { opacity: 0, y: 100 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      )
+      .fromTo(
+        heading2Ref.current,
+        { opacity: 0, scale: 0.8, y: 50 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        "-=.2"
+      )
+      .fromTo(
+        paragraphRef.current,
+        { opacity: 0, scale: 0.8, y: 30 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        "-=.2"
+      )
+      .fromTo(
+        featImgRef.current,
+        { opacity: 0, scale: 0.6 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" },
+        "-=.1"
+      )
+      .fromTo(
+        featCardRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" },
+        "-=.1"
+      );
+    if (featCardRef.current) {
+      tl.fromTo(
+        featCardRef.current.children,
+        { opacity: 0, scale: 0.95, stagger: 0.1 },
+        {
+          opacity: 1,
+          scale: 1,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        "-=.2"
+      );
+    }
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, []);
+
   return (
-    <div className="">
+    <div ref={containerRef} className="">
       <div className="flex flex-col gap-[30px] md:gap-10 900:gap-[60px] max-w-[1280px] mx-auto  px-5 md:px-10 lg:px-[70px] pt-10 md:pt-[70px]  lg:pt-[90px] pb-[50px] md:pb-[80px] lg:pb-[100px] text-black">
         <div className="  flex flex-col items-center justify-center gap-[10px] md:gap-5 lg:gap-[30px]">
-          <Heading2 className="text-center">Choose idle plan for Retailer</Heading2>
-          <Paragraph className="text-center max-w-[730px]">
+          <Heading2 ref={heading2Ref} className="text-center">
+            Choose idle plan for Retailer
+          </Heading2>
+          <Paragraph ref={paragraphRef} className="text-center max-w-[730px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
             sit amet.
           </Paragraph>
         </div>
         <div className="900:h-[610px] flex-col 900:flex-row flex 900:items-center justify-center gap-5">
-          <div className="flex-1 relative min-h-[400px] h-full 900:w-1/2 rounded-[20px] bg-black overflow-hidden">
+          <div
+            ref={featImgRef}
+            className="flex-1 relative min-h-[400px] h-full 900:w-1/2 rounded-[20px] bg-black overflow-hidden"
+          >
             <div className="absolute inset-0 z-10  text-white px-5 py-[15px] md:px-10 md:py-[35px] 900:px-[60px] 900:py-[55px]">
               <div className="relative  h-full">
                 <Heading5
@@ -217,7 +292,10 @@ const RetailerPlans = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-black to-transparent pointer-events-none"></div>
           </div>
 
-          <div className="flex-1 flex flex-col h-full  justify-between gap-5 ">
+          <div
+            ref={featCardRef}
+            className="flex-1 flex flex-col h-full  justify-between gap-5 "
+          >
             {plans?.map((item, index) => (
               <div
                 key={index}

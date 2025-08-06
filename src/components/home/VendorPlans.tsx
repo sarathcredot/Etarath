@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Heading2 from "../common/Heading2";
 import Paragraph from "../common/Paragraph";
 import Image from "next/image";
@@ -7,30 +9,105 @@ import SubHeading1 from "../common/Subheading1";
 import { BsArrowDownRight } from "react-icons/bs";
 import { GoCheckCircleFill } from "react-icons/go";
 import Heading3 from "../common/Heading3";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const VendorPlans = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heading2Ref = useRef<HTMLDivElement>(null);
+  const paragraphRef = useRef<HTMLDivElement>(null);
+  const countRef = useRef<HTMLDivElement>(null);
+  const vendorTagRef = useRef<HTMLDivElement>(null);
+  const planContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const tl = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          end: "bottom 100%",
+          toggleActions: "play none none reverse",
+        },
+      })
+      .fromTo(
+        containerRef.current,
+        { opacity: 0, y: 100 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      )
+      .fromTo(
+        heading2Ref.current,
+        { opacity: 0, scale: 0.8, y: 50 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        "-=.1"
+      )
+      .fromTo(
+        paragraphRef.current,
+        { opacity: 0, scale: 0.8, y: 50 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      )
+      .fromTo(
+        countRef.current,
+        { opacity: 0, scale: 0.8, x: 100 },
+        { opacity: 1, scale: 1, x: 0, duration: 0.6, ease: "power2.out" },
+        "-=.1"
+      )
+      .fromTo(
+        vendorTagRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
+        "-=.1"
+      )
+      .fromTo(
+        planContainerRef.current,
+        { opacity: 0, y: 100 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        "-=.2"
+      );
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, []);
   return (
     <div className="pt-[50px] md:pt-20 lg:pt-[100px] pb-[70px] md:pb-[100px] lg:pb-[120px] transition-all duration-300 ease-in-out">
-      <div className="flex flex-col md:flex-row  gap-5 md:items-center justify-between mb-[30px] md:mb-[60px] transition-all duration-300 ease-in-out">
+      <div
+        ref={containerRef}
+        className="flex flex-col md:flex-row  gap-5 md:items-center justify-between mb-[30px] md:mb-[60px] transition-all duration-300 ease-in-out"
+      >
         <div>
-          <Heading2 className="mb-5 lg:mb-[30px]">
+          <Heading2 ref={heading2Ref} className="mb-5 lg:mb-[30px]">
             Choose Idle plan for vendor
           </Heading2>
-          <Paragraph>
+          <Paragraph ref={paragraphRef}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod <br /> tempor incididunt ut labore et dolore magna.
           </Paragraph>
         </div>
         <div className="relative flex items-center gap-5 ">
-          <h1 className="text-[80px] md:text-[120px] lg:text-[150px] leading-none tracking-[3px] font-[700]  text-outline-shadow-primary font-manrope md:mr-[50px]">
+          <h1
+            ref={countRef}
+            className="text-[80px] md:text-[120px] lg:text-[150px] leading-none tracking-[3px] font-[700]  text-outline-shadow-primary font-manrope md:mr-[50px]"
+          >
             250+
           </h1>
-          <h6 className="absolute -right-[38px] text-[20px] md:text-[22px] lg:text-[24px] font-[600] font-jakarta uppercase rotate-90   whitespace-nowrap">
+          <h6
+            ref={vendorTagRef}
+            className="absolute -right-[38px] text-[20px] md:text-[22px] lg:text-[24px] font-[600] font-jakarta uppercase rotate-90   whitespace-nowrap"
+          >
             VENDORS
           </h6>
         </div>
       </div>
-      <div className="relative w-screen left-1/2 -translate-x-1/2  ">
+      <div
+        ref={planContainerRef}
+        className="relative w-screen left-1/2 -translate-x-1/2  "
+      >
         <div className="grid md:grid-cols-2  md:h-[650px] border-t border-b border-white">
           <div className="min-h-[500px] flex items-end justify-start relative group outline  transition-all duration-300 ease-in-out">
             <div className="p-5 md:p-10 lg:p-[70px] z-30 transition-all duration-300 ease-in-out">
