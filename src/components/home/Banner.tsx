@@ -35,7 +35,7 @@ const Banner = () => {
       <div className="relative my-[60px]">
         <div className="relative w-full h-[300px] md:h-[500px] rounded-[20px] md:rounded-[30px] lg:rounded-[40px] overflow-hidden">
           <Image
-            src="/home/banner_img.webp"
+            src="/images/home/banner_img.webp"
             alt="banner image"
             fill
             priority

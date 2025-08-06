@@ -78,7 +78,7 @@ const VendorPlans = () => {
             </div>
             <div className="absolute opacity-0 group-hover:opacity-100 top-[50%] -translate-y-[50%] w-full h-[100%] md:h-[110%] transition-all duration-300 ease-in-out">
               <Image
-                src={"/home/banner_img.webp"}
+                src={"/images/home/banner_img.webp"}
                 alt="plan img"
                 fill
                 className="object-cover  !w-0  group-hover:!w-full  !h-[100%] transition-all duration-300 ease-in-out "
@@ -132,7 +132,7 @@ const VendorPlans = () => {
             </div>
             <div className="absolute opacity-0 group-hover:opacity-100 top-[50%] -translate-y-[50%] w-full h-[100%] md:h-[110%] transition-all duration-300 ease-in-out">
               <Image
-                src={"/home/banner_img.webp"}
+                src={"/images/home/banner_img.webp"}
                 alt="plan img"
                 fill
                 className="object-cover  !w-0  group-hover:!w-full  !h-[100%] transition-all duration-300 ease-in-out "

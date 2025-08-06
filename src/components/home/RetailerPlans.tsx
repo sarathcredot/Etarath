@@ -27,7 +27,7 @@ const RetailerPlans = () => {
       ],
       freeTrial: 75,
       price: 49,
-      image: "/home/plan_card_image.webp",
+      image: "/images/home/plan_card_image.webp",
     },
     {
       id: 2,
@@ -42,7 +42,7 @@ const RetailerPlans = () => {
       ],
       freeTrial: 75,
       price: 89,
-      image: "/home/plan_card_image.webp",
+      image: "/images/home/plan_card_image.webp",
     },
     {
       id: 3,
@@ -57,7 +57,7 @@ const RetailerPlans = () => {
       ],
       freeTrial: 75,
       price: 129,
-      image: "/home/plan_card_image.webp",
+      image: "/images/home/plan_card_image.webp",
     },
   ];
 
