@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #000002;
+  --background: #000002;
+  --foreground: #ffffff;
   --primary: #ff600f;
 }
 
@@ -16,8 +16,8 @@
   --font-manrope: var(--font-manrope);
 
   /* custome break point */
-   --breakpoint-1180: 1180px;
-   --breakpoint-900: 900px;
+  --breakpoint-1180: 1180px;
+  --breakpoint-900: 900px;
 
   --animate-scroll: scroll var(--animation-duration, 40s)
     var(--animation-direction, forwards) linear infinite;
@@ -29,12 +29,12 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #000002;
     --foreground: #ededed;
   }
-}
+} */
 * {
   box-sizing: border-box;
   /* Hide scrollbar globally */
@@ -87,8 +87,6 @@ body {
   z-index: -1;
   background: #ff600f;
 } */
-
-
 
 .cursor {
   position: absolute;
