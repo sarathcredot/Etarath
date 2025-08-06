@@ -16,10 +16,10 @@ const Banner = () => {
   const bannerLogoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    var mySplitText = new SplitText(heading1Ref.current, { type: "lines" }),
+    const mySplitText = new SplitText(heading1Ref.current, { type: "lines" }),
       headingLines = mySplitText.lines;
-    var mySplitText = new SplitText(subHeading1Ref.current, { type: "lines" }),
-      subLines = mySplitText.lines;
+    const mySplitText2 = new SplitText(subHeading1Ref.current, { type: "lines" }),
+      subLines = mySplitText2.lines;
 
     const tl = gsap.timeline({ duration: 1, ease: "power2.out" });
 

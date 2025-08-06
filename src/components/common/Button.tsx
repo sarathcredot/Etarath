@@ -47,7 +47,10 @@ const button = cva(
   }
 );
 
-const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement|HTMLDivElement, ButtonProps>(
+const Button = forwardRef<
+  HTMLAnchorElement | HTMLButtonElement | HTMLDivElement,
+  ButtonProps
+>(
   (
     {
       variant,
@@ -65,7 +68,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement|HTMLDivElement, 
     return type === "link" ? (
       <Link
         href={href}
-        ref={ref as any}
+        ref={ref as React.Ref<HTMLAnchorElement>}
         className={`${button({ variant, color, textColor })} ${className}`}
         onClick={onClick}
       >
@@ -76,7 +79,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement|HTMLDivElement, 
       </Link>
     ) : (
       <button
-        ref={ref as any}
+        ref={ref as React.Ref<HTMLButtonElement>}
         type={type}
         onClick={onClick}
         disabled={disabled}
