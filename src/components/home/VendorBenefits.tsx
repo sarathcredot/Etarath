@@ -23,7 +23,7 @@ const VendorBenefits = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 80%",
+        start: "top 90%",
         end: "bottom 100%",
         toggleActions: "play none none reverse",
       },
@@ -125,7 +125,7 @@ const VendorBenefits = () => {
             <div
               key={index}
               onClick={() => setActiveTab(activeTab === index ? null : index)}
-              className={`relative  lg:h-[470px] flex  items-center lg:justify-center border border-white rounded-[15px] md:rounded-[20px] group cursor-pointer hover:bg-primary hover:border-primary  ${
+              className={`relative  lg:h-[470px] flex  items-center lg:justify-center border border-white rounded-[15px] md:rounded-[20px] group cursor-pointer hover:bg-white hover:text-primary  ${
                 activeTab === index
                   ? "flex-col justify-start items-start lg:!w-[500px] group bg-primary !border-primary px-5 py-[15px] lg:px-[45px] lg:py-10"
                   : "flex-1 px-5 py-[15px]"

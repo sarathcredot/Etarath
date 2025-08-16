@@ -25,7 +25,7 @@ export default function Home() {
       .timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 100%",
           toggleActions: "play none none reverse",
         },

@@ -46,7 +46,7 @@ export default function RootLayout({
       >
         <Navbar />
         {/* Main content */}
-        <div className="mt-[80px] px-5 md:px-10 lg:px-[70px] max-w-[1280px] mx-auto">{children}</div>
+        <div className="mt-[80px] px-5 md:px-10 lg:px-[70px] max-w-[1480px] mx-auto">{children}</div>
         <Footer />
 
       </body>
