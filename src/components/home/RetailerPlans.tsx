@@ -175,7 +175,7 @@ const RetailerPlans = () => {
       .timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 100%",
           toggleActions: "play none none reverse",
         },
@@ -232,7 +232,7 @@ const RetailerPlans = () => {
 
   return (
     <div ref={containerRef} className="">
-      <div className="flex flex-col gap-[30px] md:gap-10 900:gap-[60px] max-w-[1280px] mx-auto  px-5 md:px-10 lg:px-[70px] pt-10 md:pt-[70px]  lg:pt-[90px] pb-[50px] md:pb-[80px] lg:pb-[100px] text-black">
+      <div className="flex flex-col gap-[30px] md:gap-10 900:gap-[60px] max-w-[1480px] mx-auto  px-5 md:px-10 lg:px-[70px] pt-10 md:pt-[70px]  lg:pt-[90px] pb-[50px] md:pb-[80px] lg:pb-[100px] text-black">
         <div className="  flex flex-col items-center justify-center gap-[10px] md:gap-5 lg:gap-[30px]">
           <Heading2 ref={heading2Ref} className="text-center">
             Choose idle plan for Retailer

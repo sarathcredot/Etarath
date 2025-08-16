@@ -44,7 +44,7 @@ const Brands = () => {
       .timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 100%",
           toggleActions: "play none none reverse",
         },
@@ -79,7 +79,7 @@ const Brands = () => {
     //     duration: 1,
     //     scrollTrigger: {
     //       trigger: cardsRef.current, // can also use containerRef
-    //       start: "top 80%",
+    //       start: "top 90%",
     //       end: "bottom 100%",
     //       scrub: 1,
     //     },
