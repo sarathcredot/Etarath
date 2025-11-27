@@ -56,7 +56,7 @@ export default function Home() {
       </div>
       <VendorPlans />
       <Testimonials /> */}
-      <Insights />
+      {/* <Insights /> */}
     </div>
   );
 }
