@@ -14,30 +14,30 @@ gsap.registerPlugin(ScrollTrigger);
 const Insights = () => {
   const items = [
     {
-      title: "History",
-      description: "Lorem ipsum dolor, sedconsectetur adipiscing",
-      date: "December 4, 2022",
+      title: "",
+      description: "Digital Transformation in Tyre Distribution: What to Expect by 2026",
+      date: "",
       comments: 0,
       image: "/images/home/insight_img.webp",
     },
     {
-      title: "Market place",
-      description: "Lorem ipsum dolor, sedconsectetur adipiscing",
-      date: "December 3, 2022",
+      title: "",
+      description: "Data-Driven Growth Strategies for Tyre Dealers in the UAE",
+      date: "",
       comments: 0,
       image: "/images/home/banner_img.webp",
     },
     {
-      title: "SALES",
-      description: "Lorem ipsum dolor, sedconsectetur adipiscing",
-      date: "December 2, 2022",
+      title: "",
+      description: "Building Competitive Advantage in Automotive Commerce",
+      date: "",
       comments: 0,
       image: "/images/home/plan_card_image.webp",
     },
     {
-      title: "SALES",
-      description: "Lorem ipsum dolor, sedconsectetur adipiscing",
-      date: "December 2, 2022",
+      title: "",
+      description: "Case Study: AL AMAL Achieves 30%+ Growth with Etarath",
+      date: "",
       comments: 0,
       image: "/images/home/plan_card_image.webp",
     },
@@ -73,9 +73,9 @@ const Insights = () => {
     <div className="mb-[50px] md:mb-[80px] lg:mb-[100px]">
       <div ref={containerRef}>
         <div className="flex justify-between items-end mb-[30px] md:mb-10 lg:mb-[60px]">
-          <Heading2>Our insights</Heading2>
+          <Heading2>Insights & Success Stories</Heading2>
           <Button3 className="!hidden md:!flex" color="white">
-            Explore More
+            Read More Articles
           </Button3>
         </div>
         <ScrollContainer
@@ -98,7 +98,7 @@ const Insights = () => {
                 </p>
                 <Heading7 className="">{item?.description}</Heading7>
                 <p className="text-[14px] font-[400]  ">
-                  {item?.date} . {item?.comments} Comments
+                  {item?.date}  {item?.comments} Comments
                 </p>
               </div>
             </div>

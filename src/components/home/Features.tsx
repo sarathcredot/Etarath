@@ -34,11 +34,11 @@ const Features = () => {
       { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
     ).fromTo(
       containerRef.current.children,
-      { opacity: 0,scale:.6, y: 50, stagger: 0.2 },
+      { opacity: 0, scale: .6, y: 50, stagger: 0.2 },
       {
         opacity: 1,
         y: 0,
-        scale:1,
+        scale: 1,
         stagger: 0.1,
         duration: 0.4,
         ease: "power2.out",
@@ -55,11 +55,10 @@ const Features = () => {
     <div className="my-[50px] md:my-[80px] lg:my-[100px]  ">
       <div ref={containerRef} className=" grid 1180:grid-cols-18 gap-5">
         <div className="order-2 1180:order-none 1180:col-span-9    border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]">Interaction</Heading8>{" "}
+          <Heading8 className="mb-[10px]">Tyre Business Made Easy</Heading8>{" "}
           <Paragraph className=" mb-[15px] md:mb-5 ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna. Do eiusmod
-            dolore ut magna sed ipsum
+            Simplify sourcing, ordering, and inventory management
+            with one powerful platform.
           </Paragraph>
           <Button3
             color="white"
@@ -69,11 +68,10 @@ const Features = () => {
           </Button3>
         </div>
         <div className="order-3 1180:order-none 1180:col-span-9    border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]">Privacy & Security</Heading8>
+          <Heading8 className="mb-[10px]">Smart Data Analytics</Heading8>
           <Paragraph className=" mb-[15px] md:mb-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna. Do eiusmod
-            dolore ut magna sed ipsum elit due eiusmod tempor do etil.
+            Track sales, monitor orders, and unlock actionable
+            insights from a centralised dashboard.
           </Paragraph>
           <Button3
             color="white"
@@ -83,12 +81,10 @@ const Features = () => {
           </Button3>
         </div>
         <div className="order-4 1180:order-none 1180:col-span-4    row-span-2 border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]">Warehouse management</Heading8>
+          <Heading8 className="mb-[10px]"> Intelligent Business Tools</Heading8>
           <Paragraph className=" mb-[15px] md:mb-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
-            sit amet, consectetur adipiscing elit, sed do eiusmod. suit ipsum
-            dolor sit amet, consectetur adipiscing elit ut dem sed magna.
+            Access real-time sales tracking, automated claim management,
+            and instant quotation generation.
           </Paragraph>
           <Button3
             color="white"
@@ -105,11 +101,12 @@ const Features = () => {
         </div>
         <div className="order-5 1180:order-none 1180:col-span-4     border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
           <Heading8 className="mb-[10px]  ">
-            Sales Exicutive management
+            Autonomous Scaling
+
           </Heading8>
           <Paragraph className=" mb-[15px] md:mb-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut dem sed
-            magna.
+            Expand reach with built-in marketing tools and
+            automated visibility features.
           </Paragraph>
           <Button3
             color="white"
@@ -121,9 +118,8 @@ const Features = () => {
         <div className=" order-6 1180:order-none 1180:col-span-7    border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
           <Heading8 className="mb-[10px]">Multi Level Marketing</Heading8>
           <Paragraph className=" mb-[15px] md:mb-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna sed do eiusmod
-            tempor incididunt.
+            Connect with industry leaders and grow through
+            strategic partnerships.
           </Paragraph>
           <Button3
             color="white"
@@ -133,11 +129,10 @@ const Features = () => {
           </Button3>
         </div>
         <div className="order-7  1180:order-none  1180:col-span-7    border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]">Online Invoice Generation</Heading8>{" "}
+          <Heading8 className="mb-[10px]">Privacy & Security</Heading8>{" "}
           <Paragraph className=" mb-[15px] md:mb-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna sed do eiusmod
-            tempor incididunt.
+            Enterprise-grade encryption and compliance ensure
+            your business data stays protected.
           </Paragraph>
           <Button3
             color="white"

@@ -61,16 +61,18 @@ const Banner = () => {
     <div>
       <div>
         <Heading1 ref={heading1Ref} className=" text-center mb-[30px]">
-          Introducing <span className="text-primary">Etarath </span>
+          {/* Introducing <span className="text-primary">Etarath </span>
           <br /> for you, a b2B tyre selling
-          <br className="max-md:hidden " /> platform
+          <br className="max-md:hidden " /> platform */}
+          The <span className="text-primary">UAE’s </span> Ultimate
+          <br />
+          B2B Tyre Marketplace
         </Heading1>
         <SubHeading1
           ref={subHeading1Ref}
           className="text-center mb-[40px] md:mx-[10%] lg:mx-[16%]"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Connecting verified vendors and retailers with speed, trust, and intelligence.
         </SubHeading1>
         <div
           ref={buttonContainerRef}
@@ -86,7 +88,7 @@ const Banner = () => {
             Get Started
           </Button>
           <Button type="link" href="/" variant="outline" color="primary">
-            Learn More
+            Book a Demo
           </Button>
         </div>
       </div>

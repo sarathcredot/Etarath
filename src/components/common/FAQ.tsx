@@ -28,24 +28,24 @@ const FAQ = forwardRef<HTMLDivElement>((props, ref) => {
 
   const questions = [
     {
-      question: "Lorem ipsum sed ut amet suit queue",
+      question: "Smart Quotation System ",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit",
+        "Compare quotes from multiple suppliers instantly."
     },
     {
-      question: "Lorem ipsum sed ut amet suit queue",
+      question: "Wide Range of Products",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit",
+        "Access the largest verified tyre supplier network."
     },
     {
-      question: "Lorem ipsum sed ut amet suit queue",
+      question: "Connect with Industry Leaders",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit",
+        "Build relationships and gain insights from experts."
     },
     {
-      question: "Lorem ipsum sed ut amet suit queue",
+      question: "Delivery Tracking",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit",
+        "Track every order in real time for complete visibility."
     },
   ];
   return (
@@ -53,9 +53,8 @@ const FAQ = forwardRef<HTMLDivElement>((props, ref) => {
       {questions?.map((item, index) => (
         <div
           key={index}
-          className={`flex flex-col ${
-            questions?.length - 1 !== index && `border-b border-white`
-          } transition-all duration-300 ease-in-out`}
+          className={`flex flex-col ${questions?.length - 1 !== index && `border-b border-white`
+            } transition-all duration-300 ease-in-out`}
         >
           <div
             className="group flex items-center gap-5 py-4 md:py-[22px] cursor-pointer  transition-all duration-200"

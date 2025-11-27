@@ -52,7 +52,7 @@ const VendorBenefits = () => {
       .fromTo(
         benefitsContainerRef.current.children,
         { opacity: 0, x: -100, stagger: 0.2 },
-        { opacity: 1, x: 0, stagger: 0.2, duration: 0.3, ease: "power2.out" },'-=0.2'
+        { opacity: 1, x: 0, stagger: 0.2, duration: 0.3, ease: "power2.out" }, '-=0.2'
       );
 
     return () => {
@@ -63,40 +63,40 @@ const VendorBenefits = () => {
 
   const benefits = [
     {
-      title: "Lorem ipsum set amet",
-      heading: "Lorem ipsum dolor, consectetur adipiscing elit",
+      title: "Analytics Dashboard ",
+      heading: "Analytics Dashboard ",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Suit ipsum dolor sit amet, consectetur adipiscing elit ut dem sed magna.Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet. ",
+        "Monitor performance in real time and make data-driven decisions."
     },
     {
-      title: "Lorem ipsum set amet",
-      heading: "Lorem ipsum dolor, consectetur adipiscing elit",
+      title: "Streamlined Inventory & Ordering",
+      heading: "Streamlined Inventory & Ordering",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Suit ipsum dolor sit amet, consectetur adipiscing elit ut dem sed magna.Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet. ",
+        "Automate updates and fulfil orders faster."
     },
     {
-      title: "Lorem ipsum set amet",
-      heading: "Lorem ipsum dolor, consectetur adipiscing elit",
+      title: "Multiple Pricing System",
+      heading: "Multiple Pricing System",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Suit ipsum dolor sit amet, consectetur adipiscing elit ut dem sed magna.Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet. ",
+        "Flexible tiers for bulk orders,campaigns, and customer segments."
     },
     {
-      title: "Lorem ipsum set amet",
-      heading: "Lorem ipsum dolor, consectetur adipiscing elit",
+      title: "Claim Management System",
+      heading: "Claim Management System –",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Suit ipsum dolor sit amet, consectetur adipiscing elit ut dem sed magna.Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet. ",
+        "Resolve warranty claims transparently and efficiently."
     },
     {
-      title: "Lorem ipsum set amet",
-      heading: "Lorem ipsum dolor, consectetur adipiscing elit",
+      title: "Sales Tracker",
+      heading: "Sales Tracker",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Suit ipsum dolor sit amet, consectetur adipiscing elit ut dem sed magna.Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet. ",
+        "Track deals, conversion rates, and team productivity."
     },
     {
-      title: "Lorem ipsum set amet",
-      heading: "Lorem ipsum dolor, consectetur adipiscing elit",
+      title: "Business Expansion & Reach",
+      heading: "Business Expansion & Reach",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Suit ipsum dolor sit amet, consectetur adipiscing elit ut dem sed magna.Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet. ",
+        "Access a growing network of qualified buyers across the UAE."
     },
   ];
 
@@ -105,16 +105,13 @@ const VendorBenefits = () => {
       <div ref={containerRef} className="flex flex-col gap-[60px]">
         <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-5 md:gap-[30px] lg:gap-[60px]">
           <Heading2 className="lg:w-[50%]">
-            Benefits of Becoming an <br className="hidden md:block lg:hidden" />
-            <span className="text-primary">Etarath</span> Vendor
+            {/* Benefits of Becoming an <br className="hidden md:block lg:hidden" />
+            <span className="text-primary">Etarath</span> Vendor */}
+            Why Join <span className="text-primary">Etarath</span>  as a Verified Vendor
           </Heading2>
           <Paragraph className="lg:w-[50%]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
-            sit amet, consectetur adipiscing elit, sed do eiusmod. suit ipsum
-            dolor sit amet, consectetur adipiscing elit ut dem sed magna. sed do
-            eiusmod tempor incididunt ut labore et dolore lorem ipsum set ut do
-            elit suit labore et magna adipisicing dem sed dolor amet.{" "}
+            Partner with a network of professional buyers and
+            grow your business with confidence.
           </Paragraph>
         </div>
         <div
@@ -125,11 +122,10 @@ const VendorBenefits = () => {
             <div
               key={index}
               onClick={() => setActiveTab(activeTab === index ? null : index)}
-              className={`relative  lg:h-[470px] flex  items-center lg:justify-center border border-white rounded-[15px] md:rounded-[20px] group cursor-pointer hover:bg-white hover:text-primary  ${
-                activeTab === index
-                  ? "flex-col justify-start items-start lg:!w-[500px] group bg-primary !border-primary px-5 py-[15px] lg:px-[45px] lg:py-10"
-                  : "flex-1 px-5 py-[15px]"
-              }    transition-all duration-600 ease-in-out`}
+              className={`relative  lg:h-[470px] flex  items-center lg:justify-center border border-white rounded-[15px] md:rounded-[20px] group cursor-pointer hover:bg-white hover:text-primary  ${activeTab === index
+                ? "flex-col justify-start items-start lg:!w-[500px] group bg-primary !border-primary px-5 py-[15px] lg:px-[45px] lg:py-10"
+                : "flex-1 px-5 py-[15px]"
+                }    transition-all duration-600 ease-in-out`}
             >
               {activeTab === index ? (
                 <>

@@ -63,20 +63,18 @@ const Footer = () => {
       >
         <div className="relative z-10">
           <Heading2 className="mb-5 md:mb-[30px]">
-            Be part of <span className="text-primary">Etarath</span>, <br />{" "}
-            boost your business
+            {/* Be part of <span className="text-primary">Etarath</span>, <br />{" "}
+            boost your business */}
+            Ready to <span className="text-primary">Transform</span> <br /> Your Tyre Business?
           </Heading2>
           <Paragraph className="mb-[40px] max-w-[633px]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
-            sit amet, consectetur adipiscing elit, sed do eiusmod. suit ipsum
-            dolor sit amet, consectetur adipiscing elit ut dem sed magna. sed do
-            eiusmod tempor incididunt.
+            Join hundreds of vendors and retailers building
+            success on Etarath.
           </Paragraph>
           <div className="flex flex-col sm:flex-row items-center justify-start gap-5">
-            <Button textColor="black">Become a Vendor</Button>
+            <Button textColor="black">Get Started Today</Button>
             <Button variant="outline" color="primary">
-              Become a Retailer
+              Book a Demo
             </Button>
           </div>
         </div>

@@ -69,16 +69,12 @@ const RetailerBenefits = () => {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10 md:gap-[60px]">
         <div className="lg:w-[47%] flex flex-col items-start justify-start">
           <Heading2 ref={heading2Ref} className="mb-[30px]">
-            Benefits of Becoming an <br className="hidden md:block lg:hidden" />
-            <span className="text-primary">Etarath</span> Retailer
+            {/* Benefits of Becoming an <br className="hidden md:block lg:hidden" />
+            <span className="text-primary">Etarath</span> Retailer */}
+            Why Retailers Choose <span className="text-primary">Etarath</span>
           </Heading2>
           <Paragraph ref={paragraphRef} className="mb-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
-            sit amet, consectetur adipiscing elit, sed do eiusmod. suit ipsum
-            dolor sit amet, consectetur adipiscing elit ut dem sed magna. sed do
-            eiusmod tempor incididunt ut labore et dolore lorem ipsum set ut do
-            elit suit labore et magna adipisicing dem sed dolor amet.{" "}
+            Simplify work, improve margins, and operate with complete confidence.
           </Paragraph>
           <Button
             ref={buttonRef}
@@ -87,7 +83,7 @@ const RetailerBenefits = () => {
             textColor="black"
             className=""
           >
-            Get Started
+            Start Procuring Smarter
           </Button>
         </div>
         <div className="lg:w-[50%]">
