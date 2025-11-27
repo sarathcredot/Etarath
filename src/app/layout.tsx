@@ -27,8 +27,8 @@ const manrope = Manrope({
 
 
 export const metadata: Metadata = {
-  title: "Etarath",
-  description: "Etarath | B2B tyre marketplace",
+  title: "The UAE’s Ultimate B2B Tyre Marketplace",
+  description: "Connecting verified vendors and retailers with speed, trust, and intelligence.",
   icons: {
     icon: "/etarath_favicon.svg", // Path to your favicon
   },
