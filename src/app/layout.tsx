@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
-import { Plus_Jakarta_Sans, Open_Sans ,Manrope} from "next/font/google";
+import { Plus_Jakarta_Sans, Open_Sans, Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
@@ -31,6 +31,15 @@ export const metadata: Metadata = {
   description: "Connecting verified vendors and retailers with speed, trust, and intelligence.",
   icons: {
     icon: "/etarath_favicon.svg", // Path to your favicon
+  },
+  openGraph: {
+    title: "The UAE’s Ultimate B2B Tyre Marketplace",
+    description: "Connecting verified vendors and retailers with speed, trust, and intelligence.",
+    images: ["/etarath_black.png"], // Meta image (large)
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/etarath_black.png"], // Meta image (large)
   },
 };
 
