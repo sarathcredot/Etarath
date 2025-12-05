@@ -74,7 +74,8 @@ const RetailerBenefits = () => {
             Why Retailers Choose <span className="text-primary">Etarath</span>
           </Heading2>
           <Paragraph ref={paragraphRef} className="mb-10">
-            Simplify work, improve margins, and operate with complete confidence.
+            Etarath simplifies procurement, improves margins, and operates with complete
+            confidence through our retail-focused platform.
           </Paragraph>
           <Button
             ref={buttonRef}

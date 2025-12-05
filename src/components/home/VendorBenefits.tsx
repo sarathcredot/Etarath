@@ -66,38 +66,40 @@ const VendorBenefits = () => {
       title: "Analytics Dashboard ",
       heading: "Analytics Dashboard ",
       description:
-        "Monitor performance in real time and make data-driven decisions."
+        "Monitor your business and performance in real-time. Track sales trends, analyze customer behavior, and make data-driven decisions that drive revenue growth."
     },
     {
       title: "Streamlined Inventory & Ordering",
       heading: "Streamlined Inventory & Ordering",
       description:
-        "Automate updates and fulfil orders faster."
+        "Manage stock levels across all channels from one platform. Automate inventory updates and fulfill orders faster, reducing manual work and human error.Create a business in less than a minute. "
     },
     {
       title: "Multiple Pricing System",
       heading: "Multiple Pricing System",
       description:
-        "Flexible tiers for bulk orders,campaigns, and customer segments."
+        "Set flexible pricing tiers for different customer segments, bulk orders, and seasonal campaigns. Ensure to reach buyers with the best offers autonomously. "
     },
     {
       title: "Claim Management System",
-      heading: "Claim Management System –",
+      heading: "Claim Management System",
       description:
-        "Resolve warranty claims transparently and efficiently."
+        "Handle warranty and product claims efficiently through an automated system. Resolve issues faster and maintain customer relationships with transparency and professionalism."
     },
     {
       title: "Sales Tracker",
       heading: "Sales Tracker",
       description:
-        "Track deals, conversion rates, and team productivity."
+        "Monitor every deal in progress. Track pipeline orders and performance, conversion rates, and team productivity—giving you the visibility needed to meet targets and accelerate growth."
     },
     {
       title: "Business Expansion & Reach",
       heading: "Business Expansion & Reach",
       description:
-        "Access a growing network of qualified buyers across the UAE."
+        "Access a growing network of qualified buyers across the UAE and beyond. Reduce customer acquisition costs and scale your business without additional overhead."
     },
+
+    
   ];
 
   return (
@@ -107,11 +109,12 @@ const VendorBenefits = () => {
           <Heading2 className="lg:w-[50%]">
             {/* Benefits of Becoming an <br className="hidden md:block lg:hidden" />
             <span className="text-primary">Etarath</span> Vendor */}
-            Why Join <span className="text-primary">Etarath</span>  as a Verified Vendor
+            {/* Why Join <span className="text-primary">Etarath</span>  as a Verified Vendor */}
+            Why Join  <span className="text-primary">Etarath</span>  as a Verified Vendor
           </Heading2>
           <Paragraph className="lg:w-[50%]">
-            Partner with a network of professional buyers and
-            grow your business with confidence.
+            Partner with a network of trusted buyers and grow your business with confidence and
+            safety.
           </Paragraph>
         </div>
         <div

@@ -72,7 +72,8 @@ const Banner = () => {
           ref={subHeading1Ref}
           className="text-center mb-[40px] md:mx-[10%] lg:mx-[16%]"
         >
-          Connecting verified vendors and retailers with speed, trust, and intelligence.
+          Etarath is a cutting-edge platform transforming the tyre industry by seamlessly connecting verified
+          vendors and retailers with speed, trust, and intelligence across the UAE and beyond.
         </SubHeading1>
         <div
           ref={buttonContainerRef}

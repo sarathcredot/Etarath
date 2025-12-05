@@ -28,24 +28,24 @@ const FAQ = forwardRef<HTMLDivElement>((props, ref) => {
 
   const questions = [
     {
-      question: "Smart Quotation System ",
+      question: "Smart Quotation System",
       answer:
-        "Compare quotes from multiple suppliers instantly."
+        "Request and compare quotes from multiple verified suppliers instantly. Get competitive pricing, transparent terms, and detailed product specifications—all in seconds."
     },
     {
       question: "Wide Range of Products",
       answer:
-        "Access the largest verified tyre supplier network."
+        "Access the largest verified supplier network of tyre products and automotive solutions.Discover new products, explore innovations, and stay ahead of market trends with real - time product knowledge."
     },
     {
       question: "Connect with Industry Leaders",
       answer:
-        "Build relationships and gain insights from experts."
+        "Build relationships with established suppliers and industry experts. Collaborate on business opportunities, gain insights from market leaders, and grow through strategic partnerships."
     },
     {
       question: "Delivery Tracking",
       answer:
-        "Track every order in real time for complete visibility."
+        "Track every order from the supplier in real-time. Know the exact time of arrival, manage receiving, and maintain accurate inventory records with complete visibility."
     },
   ];
   return (

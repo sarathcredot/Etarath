@@ -55,10 +55,10 @@ const Features = () => {
     <div className="my-[50px] md:my-[80px] lg:my-[100px]  ">
       <div ref={containerRef} className=" grid 1180:grid-cols-18 gap-5">
         <div className="order-2 1180:order-none 1180:col-span-9    border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]">Tyre Business Made Easy</Heading8>{" "}
+          <Heading8 className="mb-[10px]">TYRE BUSINESS MADE EASY</Heading8>{" "}
           <Paragraph className=" mb-[15px] md:mb-5 ">
-            Simplify sourcing, ordering, and inventory management
-            with one powerful platform.
+            Etarath simplifies the business with an all-in-one solution for sourcing, ordering, and
+            managing inventory with unmatched efficiency, with one powerful platform.
           </Paragraph>
           <Button3
             color="white"
@@ -68,10 +68,11 @@ const Features = () => {
           </Button3>
         </div>
         <div className="order-3 1180:order-none 1180:col-span-9    border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]">Smart Data Analytics</Heading8>
+          <Heading8 className="mb-[10px]">SMART DATA ANALYTICS</Heading8>
           <Paragraph className=" mb-[15px] md:mb-5">
-            Track sales, monitor orders, and unlock actionable
-            insights from a centralised dashboard.
+            Manage the entire tyre business from tracking sales and performance, Actionable
+            insights into products and market trends, monitoring orders, and generating detailed
+            inventory reports with one centralised dashboard.
           </Paragraph>
           <Button3
             color="white"
@@ -81,10 +82,11 @@ const Features = () => {
           </Button3>
         </div>
         <div className="order-4 1180:order-none 1180:col-span-4    row-span-2 border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]"> Intelligent Business Tools</Heading8>
+          <Heading8 className="mb-[10px]"> PRIVACY AND SECURITY</Heading8>
           <Paragraph className=" mb-[15px] md:mb-5">
-            Access real-time sales tracking, automated claim management,
-            and instant quotation generation.
+            We ensure enterprise-grade data protection, encrypted transactions, and full
+            compliance with international security standards to ensure your business data stays
+            protected.
           </Paragraph>
           <Button3
             color="white"
@@ -101,12 +103,14 @@ const Features = () => {
         </div>
         <div className="order-5 1180:order-none 1180:col-span-4     border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
           <Heading8 className="mb-[10px]  ">
-            Autonomous Scaling
+            INTELLIGENT BUSINESS TOOLS
 
           </Heading8>
           <Paragraph className=" mb-[15px] md:mb-5">
-            Expand reach with built-in marketing tools and
-            automated visibility features.
+            Streamline operations with our suite of intelligent business tools, such as the Sales
+            Executive app for real-time performance monitoring, an integrated claim management
+            system, and a smart quotation generator that creates instant and official quotes
+            professionally.
           </Paragraph>
           <Button3
             color="white"
@@ -116,10 +120,11 @@ const Features = () => {
           </Button3>
         </div>
         <div className=" order-6 1180:order-none 1180:col-span-7    border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]">Multi Level Marketing</Heading8>
+          <Heading8 className="mb-[10px]">SCALE BUSINESS AUTONOMOUSLY</Heading8>
           <Paragraph className=" mb-[15px] md:mb-5">
-            Connect with industry leaders and grow through
-            strategic partnerships.
+            Expand your business reach effortlessly with built-in marketing tools and automated
+            visibility features. Increase brand presence, reach new customers/vendors, and
+            increase your market share without additional overhead
           </Paragraph>
           <Button3
             color="white"
@@ -129,10 +134,11 @@ const Features = () => {
           </Button3>
         </div>
         <div className="order-7  1180:order-none  1180:col-span-7    border border-white rounded-[15px] md:rounded-[20px] lg:rounded-[23px] px-5 py-[15px] md:px-[30px]  md:py-[25px] group hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out">
-          <Heading8 className="mb-[10px]">Privacy & Security</Heading8>{" "}
+          <Heading8 className="mb-[10px]">MULTI-LEVEL NETWORKING.</Heading8>{" "}
           <Paragraph className=" mb-[15px] md:mb-5">
-            Enterprise-grade encryption and compliance ensure
-            your business data stays protected.
+            Find new partners, collaborate with industry leaders, and boost visibility and
+            accessibility for all participants. Our network supports seamless connections, making
+            it easy to work with trusted businesses across the tyre industry.
           </Paragraph>
           <Button3
             color="white"
