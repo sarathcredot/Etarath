@@ -5,8 +5,8 @@ import { BsSearch } from "react-icons/bs";
 export default function BlogSidebar() {
     return (
 
-        <div className="sticky lg:sticky lg:top-24">
-            <div className="bg-[#1a1b1d] rounded-2xl p-6 space-y-8">
+        <div className="sticky lg:sticky lg:top-24 ">
+            <div className="bg-[#1a1b1d] rounded-2xl p-6 space-y-8 ">
 
                 {/* Search */}
                 <div>

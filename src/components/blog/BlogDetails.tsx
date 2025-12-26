@@ -6,6 +6,7 @@ import Heading4 from '../common/Heading4'
 import Paragraph from '../common/Paragraph'
 import { BsFacebook, BsInstagram, BsX, BsArrowBarRight, BsClock, BsFilter } from "react-icons/bs";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Link from 'next/link';
 
 
 function BlogDetails() {
@@ -33,12 +34,21 @@ function BlogDetails() {
                     {/* Breadcrumbs */}
                     <div className="flex flex-wrap gap-2 text-xs text-gray-200 mb-4">
                         <span className="border border-gray-300 cursor-pointer hover:bg-white hover:text-black rounded-full px-7 py-2">
-                            <Paragraph>Home</Paragraph>
+                            
+                            <Link href="/">
+                                <Paragraph>Home</Paragraph>
+                            </Link>
                         </span>
 
                         <span className="border border-gray-300 cursor-pointer hover:bg-white hover:text-black rounded-full px-7 py-2">
-                            <Paragraph>Blog</Paragraph>
+                            <Link href="/blog">
+                                <Paragraph>Blog</Paragraph>
+                            </Link>
                         </span>
+
+
+
+
 
                         <span className="border border-gray-300 rounded-full px-7 py-2 bg-white text-black max-w-[260px] truncate">
                             <Paragraph className="truncate">

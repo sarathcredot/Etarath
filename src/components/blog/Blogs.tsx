@@ -1,15 +1,41 @@
 
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsFilter } from "react-icons/bs";
 import BlogSidebar from "./BlogSidebar";
 import BlogGrid from "./BlogGrid";
+import axios from "axios";
 
 function BlogsPageLayout() {
     const [openFilter, setOpenFilter] = useState(false);
 
+    useEffect(() => {
+        // Fetch blog data from the API
+        const fetchBlogs = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/common/blogs`);
+                const blogs = response?.data?.data;
+
+                console.log("Fetched blogs:", blogs);
+
+                // Check if there are any blogs available
+                if (blogs.length === 0) {
+                    console.log("No blogs available");
+                    // setShow(false);
+                } else {
+                    console.log("Blogs are available");
+
+                }
+            } catch (error) {
+                console.error('Error fetching blogs:', error);
+
+            }
+        };
+
+        fetchBlogs();
+    }, []);
     return (
-        <div className="">
+        <div className="mb-20">
 
             {/* 🔥 Mobile Filter Button */}
             <div className="flex justify-end mb-6 lg:hidden">

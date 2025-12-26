@@ -2,12 +2,40 @@
 import React from 'react'
 import BlogBanner from '@/components/blog/Banner'
 import Blogs from '@/components/blog/Blogs'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Paragraph from '@/components/common/Paragraph';
+import axios from 'axios';
 
 function Blog() {
 
     const [show, setShow] = useState(true)
+
+    useEffect(() => {
+        // Fetch blog data from the API
+        const fetchBlogs = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/common/blogs`);
+                const blogs = response?.data?.data;
+
+                console.log("Fetched blogs:", blogs);
+
+                // Check if there are any blogs available
+                if (blogs.length === 0) {
+                    console.log("No blogs available");
+                    // setShow(false);
+                } else {
+                    console.log("Blogs are available");
+                    setShow(true);
+                }
+            } catch (error) {
+                console.error('Error fetching blogs:', error);
+                setShow(false);
+            }
+        };
+
+        fetchBlogs();
+    }, []);
+
 
     return (
         <div>
