@@ -128,9 +128,9 @@ const Footer = () => {
 
           Etarath © {new Date().getFullYear()}. All rights reserved. <br />
 
-          <Link href={"/privacyPolicy"} className="underline">Privacy Policy</Link> |{" "}
+          <Link href={"/privacy-policy"} className="underline">Privacy Policy</Link> |{" "}
 
-          <Link href={"/termsAndConditions"} className="underline">
+          <Link href={"/terms-and-conditions"} className="underline">
             Terms and Conditions
           </Link>
 
