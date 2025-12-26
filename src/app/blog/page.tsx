@@ -25,11 +25,11 @@ function Blog() {
                     // setShow(false);
                 } else {
                     console.log("Blogs are available");
-                    setShow(true);
+                    // setShow(true);
                 }
             } catch (error) {
                 console.error('Error fetching blogs:', error);
-                setShow(false);
+                // setShow(false);
             }
         };
 
