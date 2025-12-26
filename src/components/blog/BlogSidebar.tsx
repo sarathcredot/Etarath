@@ -1,8 +1,54 @@
+
+"use client";
+
+import { useState } from "react";
 import Paragraph from "../common/Paragraph";
 import { BsSearch } from "react-icons/bs";
 
 
-export default function BlogSidebar() {
+export default function BlogSidebar({ tagclick }: any) {
+
+    const allTags = [
+        "PCR",
+        "Motor Cycle",
+        "Tyres",
+        "Achievements",
+        "Industrial",
+        "UAE",
+        "Dubai",
+        "OTR",
+        "Agriculture",
+        "TBR",
+        "Tubes",
+        "LTR",
+    ];
+    const allCategories = [
+        "Industrial",
+        "History",
+        "Blog",
+        "News",
+        "Events",
+        "UAE",
+        "Videos",
+    ]
+
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+    const handleTagClick = (tag: string) => {
+        setSelectedTags((prev) =>
+            prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+        );
+
+        tagclick(selectedTags);
+    };
+
+    const handleCategoryClick = (category: string) => {
+        setSelectedCategories((prev) =>
+            prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
+        );
+    };
+
     return (
 
         <div className="sticky lg:sticky lg:top-24 ">
@@ -40,13 +86,16 @@ export default function BlogSidebar() {
                     <Paragraph className="text-sm font-medium mb-4">Categories</Paragraph>
 
                     <ul className="space-y-3 text-sm cursor-pointer text-gray-300">
-                        <li>Industrial (4)</li>
-                        <li>History (5)</li>
-                        <li>Blog (9)</li>
-                        <li>News (3)</li>
-                        <li>Events (3)</li>
-                        <li>UAE (6)</li>
-                        <li>Videos (6)</li>
+                        {allCategories.map((category) => (
+                            <li onClick={() => handleCategoryClick(category)} key={category} className={`
+                transition
+                ${selectedCategories.includes(category)
+                                    ? "text-[#ff600f] font-medium"
+                                    : "hover:text-white "}
+              `}>
+                                {category}
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
@@ -56,7 +105,7 @@ export default function BlogSidebar() {
 
                     <div className="space-y-5">
                         {[1, 2].map((i) => (
-                            <div key={i} className="flex gap-3">
+                            <div key={i} className="flex gap-3 cursor-pointer">
                                 <img
                                     src="/images/home/banner_img.webp"
                                     className="w-14 h-14 rounded-lg object-cover"
@@ -81,41 +130,34 @@ export default function BlogSidebar() {
                 <div>
                     <Paragraph className="text-sm font-medium mb-4">Tags</Paragraph>
 
+
                     <div className="flex flex-wrap gap-2">
-                        {[
-                            "PCR",
-                            "Motor Cycle",
-                            "Tyres",
-                            "Achievements",
-                            "Industrial",
-                            "UAE",
-                            "Dubai",
-                            "OTR",
-                            "Agriculture",
-                            "TBR",
-                            "Tubes",
-                            "LTR",
-                        ].map((tag) => (
-                            <span
-                                key={tag}
-                                className="
-              text-xs
-              px-3
-              py-1.5
-              rounded-full
-              border
-              border-gray-500
-              text-gray-200
-              cursor-pointer
-              hover:bg-white
-              hover:text-black
-              transition
-            "
-                            >
-                                {tag}
-                            </span>
-                        ))}
+                        {allTags.map((tag) => {
+                            const isSelected = selectedTags.includes(tag);
+
+                            return (
+                                <span
+                                    key={tag}
+                                    onClick={() => handleTagClick(tag)}
+                                    className={`
+                text-xs
+                px-3
+                py-1.5
+                rounded-full
+                border
+                cursor-pointer
+                transition
+                ${isSelected
+                                            ? "bg-white text-black border-black"
+                                            : "text-gray-200 border-gray-500 "}
+              `}
+                                >
+                                    {tag}
+                                </span>
+                            );
+                        })}
                     </div>
+
                 </div>
 
             </div>

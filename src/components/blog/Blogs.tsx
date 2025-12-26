@@ -34,6 +34,13 @@ function BlogsPageLayout() {
 
         fetchBlogs();
     }, []);
+
+
+    const handilTagClick = (tag: any) => {
+       
+        console.log("Selected tag:", tag);
+    };
+
     return (
         <div className="mb-20">
 
@@ -59,7 +66,7 @@ function BlogsPageLayout() {
                 {/* ================= DESKTOP SIDEBAR ================= */}
                 <div className="lg:col-span-4 hidden lg:block">
                     <div className="sticky top-24">
-                        <BlogSidebar />
+                        <BlogSidebar tagclick={handilTagClick} />
                     </div>
                 </div>
             </div>
