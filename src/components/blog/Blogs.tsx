@@ -88,7 +88,7 @@ function BlogsPageLayout() {
                     className={`absolute right-0 top-0 h-full w-[85%] max-w-[360px] bg-black p-6 transition-transform duration-300 ${openFilter ? "translate-x-0" : "translate-x-full"
                         }`}
                 >
-                    <BlogSidebar />
+                    <BlogSidebar tagclick={handilTagClick} />
                 </div>
             </div>
         </div>

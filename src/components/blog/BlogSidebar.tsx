@@ -6,7 +6,7 @@ import Paragraph from "../common/Paragraph";
 import { BsSearch } from "react-icons/bs";
 
 
-export default function BlogSidebar({ tagclick }: any) {
+export default function BlogSidebar({ tagclick }:{ tagclick: (tag: string[]) => void }) {
 
     const allTags = [
         "PCR",
