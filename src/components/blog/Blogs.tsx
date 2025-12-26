@@ -36,8 +36,8 @@ function BlogsPageLayout() {
     }, []);
 
 
-    const handilTagClick = (tag: any) => {
-       
+    const handleTagClick = (tag: string[]) => {
+
         console.log("Selected tag:", tag);
     };
 
@@ -66,7 +66,7 @@ function BlogsPageLayout() {
                 {/* ================= DESKTOP SIDEBAR ================= */}
                 <div className="lg:col-span-4 hidden lg:block">
                     <div className="sticky top-24">
-                        <BlogSidebar tagclick={handilTagClick} />
+                        <BlogSidebar tagclick={handleTagClick} />
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ function BlogsPageLayout() {
                     className={`absolute right-0 top-0 h-full w-[85%] max-w-[360px] bg-black p-6 transition-transform duration-300 ${openFilter ? "translate-x-0" : "translate-x-full"
                         }`}
                 >
-                    <BlogSidebar tagclick={handilTagClick} />
+                    <BlogSidebar tagclick={handleTagClick} />
                 </div>
             </div>
         </div>
