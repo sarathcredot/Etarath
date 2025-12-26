@@ -12,6 +12,10 @@ import Link from 'next/link';
 function BlogDetails() {
     // 🔥 NEW
     const [openFilter, setOpenFilter] = useState(false);
+    const handleTagClick = (tag: string[]) => {
+
+        console.log("Selected tag:", tag);
+    };
 
     return (
         <div className="mb-20 relative">
@@ -34,7 +38,7 @@ function BlogDetails() {
                     {/* Breadcrumbs */}
                     <div className="flex flex-wrap gap-2 text-xs text-gray-200 mb-4">
                         <span className="border border-gray-300 cursor-pointer hover:bg-white hover:text-black rounded-full px-7 py-2">
-                            
+
                             <Link href="/">
                                 <Paragraph>Home</Paragraph>
                             </Link>
@@ -138,7 +142,7 @@ function BlogDetails() {
                 {/* ================= DESKTOP SIDEBAR ================= */}
                 <div className="relative hidden lg:block">
                     <div className="sticky top-24">
-                        <BlogSidebar />
+                        <BlogSidebar tagclick={handleTagClick} />
                     </div>
                 </div>
             </div>
@@ -160,7 +164,7 @@ function BlogDetails() {
                     className={`absolute right-0 top-0 h-full w-[85%] max-w-[360px] bg-black p-6 transition-transform duration-300 ${openFilter ? "translate-x-0" : "translate-x-full"
                         }`}
                 >
-                    <BlogSidebar />
+                    <BlogSidebar tagclick={handleTagClick} />
                 </div>
             </div>
         </div>
