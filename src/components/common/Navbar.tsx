@@ -269,8 +269,8 @@ const Navbar = () => {
               className="relative hidden md:flex items-center justify-center gap-10 text-[16px] font-[600] rounded-full bg-[#1E1F21] md:px-10 lg:px-[78px] py-[15px] cursor-none overflow-hidden transition-all duration-300 ease-in-out"
             >
               <Link className="cursor-none" href={"/#"}>Pricings</Link>
-              <Link className="cursor-none" href={"/#"}>Blog</Link>
-              <Link className="cursor-none" href={"/#"}>Contact</Link>
+              <Link className="cursor-none" href={"/blog"}>Blog</Link>
+              <Link className="cursor-none" href={"/contact"}>Contact</Link>
             </div>
           </div>
 

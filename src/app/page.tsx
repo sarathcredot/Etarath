@@ -48,6 +48,7 @@ export default function Home() {
       <Features />
       <VendorBenefits />
       <RetailerBenefits />
+      
       {/* <div
         ref={containerRef}
         className="w-screen relative left-1/2 -translate-x-1/2 bg-white overflow-hidden"
@@ -55,7 +56,7 @@ export default function Home() {
         <RetailerPlans />
       </div>
       <VendorPlans />
-      <Testimonials /> */}
+      <Testimonials /> 
       {/* <Insights /> */}
     </div>
   );
