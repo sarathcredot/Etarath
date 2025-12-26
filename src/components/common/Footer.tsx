@@ -125,8 +125,19 @@ const Footer = () => {
 
       <div className="w-full flex flex-col max-md:gap-3 md:flex-row items-center justify-between">
         <p className="max-md:text-center text-[15px] md:text-[18px] font-[400]">
-          Etarath © {new Date().getFullYear()}. All rights reserved.
+
+          Etarath © {new Date().getFullYear()}. All rights reserved. <br />
+
+          <Link href={"/privacyPolicy"} className="underline">Privacy Policy</Link> |{" "}
+
+          <Link href={"/termsAndConditions"} className="underline">
+            Terms and Conditions
+          </Link>
+
         </p>
+
+
+
         <p className="max-md:text-center text-[15px] md:text-[18px] font-[400]">
           Developed by{" "}
           <Link href={"http://credot.co/"} className="underline">
