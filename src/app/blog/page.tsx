@@ -14,7 +14,7 @@ function Blog() {
         // Fetch blog data from the API
         const fetchBlogs = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/common/blogs`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_UR}/common/blogs`);
                 const blogs = response?.data?.data;
 
                 console.log("Fetched blogs:", blogs);
