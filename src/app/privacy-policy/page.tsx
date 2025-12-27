@@ -1,21 +1,74 @@
+"use client";
 
-
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Heading4 from '@/components/common/Heading4'
 import SubHeading1 from '@/components/common/Subheading1'
 import Paragraph from '@/components/common/Paragraph'
+import Heading2 from '@/components/common/Heading2'
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 
 function PrivacyPolicyPage() {
+
+    const heading1Ref = useRef<HTMLDivElement>(null);
+    const subHeading1Ref = useRef<HTMLDivElement>(null);
+    const policyRef = useRef<HTMLElement>(null);
+
+
+    useEffect(() => {
+        const mySplitText = new SplitText(heading1Ref.current, { type: "lines" }),
+            headingLines = mySplitText.lines;
+        const mySplitText2 = new SplitText(subHeading1Ref.current, { type: "lines" }),
+            subLines = mySplitText2.lines;
+
+        const mySplitText3 = new SplitText(policyRef.current, { type: "lines" }),
+            policyLines = mySplitText3.lines;
+
+        const tl = gsap.timeline({ duration: 1, ease: "power2.out" });
+
+        tl.fromTo(
+            headingLines,
+            { opacity: 0, y: 100, scale: 0.5, rotateX: 45 },
+            { opacity: 1, y: 0, scale: 1, rotateX: 0, stagger: 0.1 }
+        ).fromTo(
+            subLines,
+            { opacity: 0, scale: 0.9 },
+            { opacity: 1, scale: 1, stagger: 0.1 }
+        ).fromTo(
+            policyLines,
+            { opacity: 0, y: 100, scale: 0.5, rotateX: 45 },
+            { opacity: 1, y: 0, scale: 1, rotateX: 0, stagger: 0.1 }
+        );
+        return () => {
+            tl.kill();
+        };
+    }, []);
+
     return (
-        <div>
-            <section className="">
-                <Heading4 className="text-3xl font-bold mb-6">
+        <div className=''>
+            <Heading2 ref={heading1Ref} className=" text-center mb-[30px]">
+                <span className="text-primary">Etarath </span>
+                <br />
+                Privacy Policy – Overview
+
+            </Heading2>
+            <SubHeading1
+                ref={subHeading1Ref}
+                className="text-center mb-[40px] md:mx-[10%] lg:mx-[16%]"
+            >
+                This Privacy Policy explains how Etarath collects, uses, and protects
+                user information. By using the platform, users agree to the data practices described here.
+            </SubHeading1>
+
+
+            <section ref={policyRef} className="">
+                {/* <Heading4 className="text-3xl font-bold mb-6">
                     ETARATH – PRIVACY POLICY
-                </Heading4>
+                </Heading4> */}
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        Privacy Policy – Overview
+                        Overview
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         Etarath respects your privacy and is committed to protecting the business
@@ -32,7 +85,7 @@ function PrivacyPolicyPage() {
                     </Paragraph>
                 </div>
 
-                <div className="space-y-3 mb-8">
+                {/* <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
                         1. Purpose of This Privacy Policy
                     </SubHeading1>
@@ -43,15 +96,15 @@ function PrivacyPolicyPage() {
                         handled responsibly. By using Etarath, users agree to the practices
                         described in this policy.
                     </Paragraph>
-                </div>
+                </div> */}
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        2. Information We Collect
+                        1. Information We Collect
                     </SubHeading1>
 
                     <Paragraph className="text-white leading-relaxed font-medium">
-                        2.1 Business & Contact Information
+                        1.1 Business & Contact Information
                     </Paragraph>
                     <Paragraph className="text-white leading-relaxed">
                         We collect business-related details such as company name, trade license
@@ -61,7 +114,7 @@ function PrivacyPolicyPage() {
                     </Paragraph>
 
                     <Paragraph className="text-white leading-relaxed font-medium">
-                        2.2 Account & Login Information
+                        1.2 Account & Login Information
                     </Paragraph>
                     <Paragraph className="text-white leading-relaxed">
                         Account credentials and role-based access information are collected to
@@ -71,7 +124,7 @@ function PrivacyPolicyPage() {
                     </Paragraph>
 
                     <Paragraph className="text-white leading-relaxed font-medium">
-                        2.3 Transaction & Usage Data
+                        1.3 Transaction & Usage Data
                     </Paragraph>
                     <Paragraph className="text-white leading-relaxed">
                         We collect data related to orders, quotations, warranty claims, and general
@@ -80,7 +133,7 @@ function PrivacyPolicyPage() {
                     </Paragraph>
 
                     <Paragraph className="text-white leading-relaxed font-medium">
-                        2.4 Uploaded Documents
+                        1.4 Uploaded Documents
                     </Paragraph>
                     <Paragraph className="text-white leading-relaxed">
                         Documents such as product listings, warranty files, inspection photos, and
@@ -92,7 +145,7 @@ function PrivacyPolicyPage() {
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        3. How We Use Your Information
+                        2. How We Use Your Information
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         The information we collect is used to operate and improve the Etarath
@@ -105,7 +158,7 @@ function PrivacyPolicyPage() {
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        4. Data Sharing & Disclosure
+                        3. Data Sharing & Disclosure
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         Etarath shares user data only when it is necessary for platform operations.
@@ -118,7 +171,7 @@ function PrivacyPolicyPage() {
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        5. Data Security Measures
+                        4. Data Security Measures
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         We implement industry-standard security measures to protect user data,
@@ -130,7 +183,7 @@ function PrivacyPolicyPage() {
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        6. Data Retention
+                        5. Data Retention
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         User data is retained only for as long as it is required to operate the
@@ -142,7 +195,7 @@ function PrivacyPolicyPage() {
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        8. User Rights & Choices
+                        6. User Rights & Choices
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         Users have the right to access and update their information at any time
@@ -153,7 +206,7 @@ function PrivacyPolicyPage() {
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        9. Third-Party Services
+                        7. Third-Party Services
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         Etarath may use trusted third-party services such as payment gateways and
@@ -165,7 +218,7 @@ function PrivacyPolicyPage() {
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        10. Changes to This Privacy Policy
+                        8. Changes to This Privacy Policy
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         Etarath may update this Privacy Policy from time to time to reflect changes
@@ -196,13 +249,13 @@ function PrivacyPolicyPage() {
 
                 <div className="space-y-3 mb-8">
                     <SubHeading1 className="text-xl font-semibold">
-                        11. Contact Information
+                        9. Contact Information
                     </SubHeading1>
                     <Paragraph className="text-white leading-relaxed">
                         For any questions, concerns, or requests related to privacy or data
                         protection, please contact us:
                     </Paragraph>
-                   
+
                 </div>
 
 
