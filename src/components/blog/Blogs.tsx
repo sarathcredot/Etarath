@@ -13,7 +13,7 @@ function BlogsPageLayout() {
         // Fetch blog data from the API
         const fetchBlogs = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_UR}/common/blogs`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/common/blogs`);
                 const blogs = response?.data?.data;
 
                 console.log("Fetched blogs:", blogs);

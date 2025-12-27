@@ -45,11 +45,11 @@ function PrivacyPolicyPage() {
     }, []);
 
     return (
-        <div className=''>
+        <div className='mb-30'>
             <Heading2 ref={heading1Ref} className=" text-center mb-[30px]">
                 <span className="text-primary">Etarath </span>
                 <br />
-                Privacy Policy – Overview
+                Privacy Policy
 
             </Heading2>
             <SubHeading1
@@ -61,7 +61,7 @@ function PrivacyPolicyPage() {
             </SubHeading1>
 
 
-            <section ref={policyRef} className="">
+            <section ref={policyRef} className="mt-20">
                 {/* <Heading4 className="text-3xl font-bold mb-6">
                     ETARATH – PRIVACY POLICY
                 </Heading4> */}

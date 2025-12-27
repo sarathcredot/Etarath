@@ -1,18 +1,73 @@
 
+"use client";
+
 import Heading2 from '@/components/common/Heading2'
 import Heading4 from '@/components/common/Heading4'
 import Paragraph from '@/components/common/Paragraph'
 import SubHeading1 from '@/components/common/Subheading1'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+
 
 function TermsAndConditionsPage() {
-    return (
-        <div>
 
-            <section className="">
-                <Heading4 className="text-3xl font-bold mb-6">
+
+    const heading1Ref = useRef<HTMLDivElement>(null);
+    const subHeading1Ref = useRef<HTMLDivElement>(null);
+    const policyRef = useRef<HTMLElement>(null);
+
+
+    useEffect(() => {
+        const mySplitText = new SplitText(heading1Ref.current, { type: "lines" }),
+            headingLines = mySplitText.lines;
+        const mySplitText2 = new SplitText(subHeading1Ref.current, { type: "lines" }),
+            subLines = mySplitText2.lines;
+
+        const mySplitText3 = new SplitText(policyRef.current, { type: "lines" }),
+            policyLines = mySplitText3.lines;
+
+        const tl = gsap.timeline({ duration: 1, ease: "power2.out" });
+
+        tl.fromTo(
+            headingLines,
+            { opacity: 0, y: 100, scale: 0.5, rotateX: 45 },
+            { opacity: 1, y: 0, scale: 1, rotateX: 0, stagger: 0.1 }
+        ).fromTo(
+            subLines,
+            { opacity: 0, scale: 0.9 },
+            { opacity: 1, scale: 1, stagger: 0.1 }
+        ).fromTo(
+            policyLines,
+            { opacity: 0, y: 100, scale: 0.5, rotateX: 45 },
+            { opacity: 1, y: 0, scale: 1, rotateX: 0, stagger: 0.1 }
+        );
+        return () => {
+            tl.kill();
+        };
+    }, []);
+    return (
+        <div className='mb-30'  >
+
+            <Heading2 ref={heading1Ref} className=" text-center mb-[30px]">
+                <span className="text-primary">Etarath </span>
+                <br />
+                TERMS & CONDITIONS
+
+            </Heading2>
+            <SubHeading1
+                ref={subHeading1Ref}
+                className="text-center mb-[40px] md:mx-[10%] lg:mx-[16%]"
+            >
+                Etarath is a digital B2B tyre marketplace connecting verified vendors and retailers. By accessing or
+                using the Etarath platform, users agree to comply
+                with these Terms & Conditions. If you do not agree, you must stop using the platform immediately.
+            </SubHeading1>
+
+            <section ref={policyRef} className="mt-20">
+                {/* <Heading4 className="text-3xl font-bold mb-6">
                     ETARATH – TERMS & CONDITIONS
-                </Heading4>
+                </Heading4> */}
 
                 {/* 1. Introduction */}
                 <div className="space-y-3 mb-8">
