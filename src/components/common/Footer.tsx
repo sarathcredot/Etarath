@@ -72,9 +72,9 @@ const Footer = () => {
             success on Etarath.
           </Paragraph>
           <div className="flex flex-col sm:flex-row items-center justify-start gap-5">
-            <Button textColor="black">Get Started Today</Button>
-            <Button variant="outline" color="primary">
-              Book a Demo
+            <Button type="link" href="https://vpanel.etarath.ai/" textColor="black">Become a Vendor</Button>
+            <Button type="link" href="https://rpanel.etarath.ai/" variant="outline" color="primary">
+             Become a Retailer
             </Button>
           </div>
         </div>

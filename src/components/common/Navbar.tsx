@@ -329,11 +329,11 @@ const Navbar = () => {
             <div ref={buttonRef}>
               <Button
                 type="link"
-                href="/"
+                href="https://vpanel.etarath.ai/"
                 className="!hidden md:!inline-flex"
                 textColor="black"
               >
-                Get Started
+                Become a Vendor
               </Button>
             </div>
           </div>

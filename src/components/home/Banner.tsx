@@ -81,15 +81,15 @@ const Banner = () => {
         >
           <Button
             type="link"
-            href="/"
+            href="https://vpanel.etarath.ai/"
             variant="solid"
             color="primary"
             textColor="black"
           >
-            Get Started
+            Become a Vendor
           </Button>
-          <Button type="link" href="/" variant="outline" color="primary">
-            Book a Demo
+          <Button type="link" href="https://rpanel.etarath.ai/" variant="outline" color="primary">
+            Become a Retailer
           </Button>
         </div>
       </div>

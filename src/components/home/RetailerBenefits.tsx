@@ -80,7 +80,7 @@ const RetailerBenefits = () => {
           <Button
             ref={buttonRef}
             type="link"
-            href="/"
+            href="https://rpanel.etarath.ai/"
             textColor="black"
             className=""
           >
