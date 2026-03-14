@@ -268,7 +268,8 @@ const Navbar = () => {
               ref={menuRef}
               className="relative hidden md:flex items-center justify-center gap-10 text-[16px] font-[600] rounded-full bg-[#1E1F21] md:px-10 lg:px-[78px] py-[15px] cursor-none overflow-hidden transition-all duration-300 ease-in-out"
             >
-              <Link className="cursor-none" href={"/#"}>Pricings</Link>
+              <Link className="cursor-none" href={"/about"}>About</Link>
+              <Link className="cursor-none" href={"/pricing"}>Pricings</Link>
               <Link className="cursor-none" href={"/blog"}>Blog</Link>
               <Link className="cursor-none" href={"/contact"}>Contact</Link>
             </div>
@@ -329,7 +330,7 @@ const Navbar = () => {
             <div ref={buttonRef}>
               <Button
                 type="link"
-                href="/"
+                href="/quick-start"
                 className="!hidden md:!inline-flex"
                 textColor="black"
               >
@@ -352,8 +353,14 @@ const Navbar = () => {
         className="fixed flex flex-col p-5 justify-between top-0 right-0 h-full w-screen bg-white/10 backdrop-blur-lg text-white shadow-lg z-[100] translate-x-full"
       >
         <div className=" flex flex-col gap-4 mt-16 text-[16px] font-[600]">
+          <Link href="/" onClick={() => setMenuOpen(false)}>
+            Home
+          </Link>
+          <Link href="/about" onClick={() => setMenuOpen(false)}>
+            About
+          </Link>
           <Link href="/pricing" onClick={() => setMenuOpen(false)}>
-            Pricings
+            Pricing
           </Link>
           <Link href="/blog" onClick={() => setMenuOpen(false)}>
             Blog
@@ -362,7 +369,7 @@ const Navbar = () => {
             Contact
           </Link>
         </div>
-        <Button type="link" href="/" className="" textColor="black">
+        <Button type="link" href="/quick-start"  onClick={() => setMenuOpen(false)} className="" textColor="black">
           Get Started
         </Button>
       </div>
