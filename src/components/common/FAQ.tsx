@@ -5,9 +5,16 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 import Heading8 from "./Heading8";
 import Paragraph from "./Paragraph";
 
-const FAQ = forwardRef<HTMLDivElement>((props, ref) => {
+interface FAQProps {
+  questions?: {
+    question: string;
+    answer: string|React.ReactNode;
+  }[];
+}
+
+const FAQ = forwardRef<HTMLDivElement, FAQProps>(({ questions = null }, ref) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<number | null>(
-    0
+    0,
   );
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [contentHeights, setContentHeights] = useState<number[]>([]);
@@ -26,41 +33,45 @@ const FAQ = forwardRef<HTMLDivElement>((props, ref) => {
     }
   }, [activeQuestionIndex]);
 
-  const questions = [
+  const staticQuestions = [
     {
       question: "Smart Quotation System",
       answer:
-        "Request and compare quotes from multiple verified suppliers instantly. Get competitive pricing, transparent terms, and detailed product specifications—all in seconds."
+        "Request and compare quotes from multiple verified suppliers instantly. Get competitive pricing, transparent terms, and detailed product specifications—all in seconds.",
     },
     {
       question: "Wide Range of Products",
       answer:
-        "Access the largest verified supplier network of tyre products and automotive solutions.Discover new products, explore innovations, and stay ahead of market trends with real - time product knowledge."
+        "Access the largest verified supplier network of tyre products and automotive solutions.Discover new products, explore innovations, and stay ahead of market trends with real - time product knowledge.",
     },
     {
       question: "Connect with Industry Leaders",
       answer:
-        "Build relationships with established suppliers and industry experts. Collaborate on business opportunities, gain insights from market leaders, and grow through strategic partnerships."
+        "Build relationships with established suppliers and industry experts. Collaborate on business opportunities, gain insights from market leaders, and grow through strategic partnerships.",
     },
     {
       question: "Delivery Tracking",
       answer:
-        "Track every order from the supplier in real-time. Know the exact time of arrival, manage receiving, and maintain accurate inventory records with complete visibility."
+        "Track every order from the supplier in real-time. Know the exact time of arrival, manage receiving, and maintain accurate inventory records with complete visibility.",
     },
   ];
+
+  const Q = questions || staticQuestions;
+
   return (
     <div ref={ref} className="flex flex-col">
-      {questions?.map((item, index) => (
+      {Q?.map((item: any, index: number) => (
         <div
           key={index}
-          className={`flex flex-col ${questions?.length - 1 !== index && `border-b border-white`
-            } transition-all duration-300 ease-in-out`}
+          className={`flex flex-col ${
+            Q?.length - 1 !== index && `border-b border-white`
+          } transition-all duration-300 ease-in-out`}
         >
           <div
             className="group flex items-center gap-5 py-4 md:py-[22px] cursor-pointer  transition-all duration-200"
             onClick={() =>
               setActiveQuestionIndex(
-                activeQuestionIndex === index ? null : index
+                activeQuestionIndex === index ? null : index,
               )
             }
           >

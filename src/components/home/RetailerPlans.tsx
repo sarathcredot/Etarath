@@ -67,12 +67,12 @@ const RetailerPlans = () => {
   const [selectedPlan, setSelectedPlan] = useState(plans[0]);
   const imageRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
-  const h5Ref = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const heading2Ref = useRef<HTMLDivElement>(null);
   const paragraphRef = useRef<HTMLDivElement>(null);
   const featImgRef = useRef<HTMLDivElement>(null);
+  const h5Ref = useRef<HTMLDivElement>(null);
   const featCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

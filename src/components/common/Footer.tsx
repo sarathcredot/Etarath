@@ -97,7 +97,7 @@ const Footer = () => {
           </Link>
           <div className="md:absolute left-1/2 top-1/2 md:-translate-x-1/2 md:-translate-y-1/2   flex items-center justify-center gap-7 lg:gap-10 text-[16px] font-[600] rounded-full   py-[15px] transition-all duration-300 ease-in-out ">
             <Link href={"/#"} className="">
-              Pricings
+              Pricing
             </Link>
             <Link href={"/#"} className="">
               Blog

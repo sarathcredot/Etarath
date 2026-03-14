@@ -85,11 +85,12 @@ const Banner = () => {
             variant="solid"
             color="primary"
             textColor="black"
+            className="whitespace-nowrap"
           >
             Become a Vendor
           </Button>
-          <Button type="link" href="https://rpanel.etarath.ai/" variant="outline" color="primary">
-            Become a Retailer
+          <Button type="link" href="/" variant="outline" color="primary" className="whitespace-nowrap">
+            Book a Demo
           </Button>
         </div>
       </div>

@@ -121,24 +121,25 @@ const Testimonials = () => {
       .fromTo(
         containerRef.current,
         { opacity: 0, y: 100 },
-        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
       )
       .fromTo(
         heading2Ref.current,
         { opacity: 0, scale: 0.8, y: 50 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out" }
+        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out" },
       )
       .fromTo(
         paragraphRef.current,
         { opacity: 0, scale: 0.8, y: 30 },
         { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out" },
-        "-=.1"
+        "-=.1",
       )
       .fromTo(
         testimonialRef.current,
         { opacity: 0, scale: 1.5, y: 100 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "power2.out" },"-=.2"
-      )
+        { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        "-=.2",
+      );
 
     return () => {
       tl.scrollTrigger?.kill();
@@ -159,14 +160,19 @@ const Testimonials = () => {
             sit amet.
           </Paragraph>
         </div>
-        <div ref={testimonialRef} className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden ">
+        <div
+          ref={testimonialRef}
+          className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden "
+        >
           <InfiniteMovingCards
+            pauseOnHover={false}
             component={component}
             speed="slow"
             direction={"left"}
             className="mb-5"
           />
           <InfiniteMovingCards
+            pauseOnHover={false}
             component={component}
             speed="slow"
             direction={"right"}
