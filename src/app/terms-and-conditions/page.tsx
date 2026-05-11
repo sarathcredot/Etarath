@@ -8,9 +8,23 @@ function TermsAndConditionsPage() {
   return (
     <div className="mb-[50px] md:mb-20 lg:mb-[100px]">
       <section className="">
-        <Heading4 className="text-3xl font-bold mb-6">
+        {/* <Heading4 className="text-3xl font-bold mb-6">
           ETARATH – TERMS & CONDITIONS
-        </Heading4>
+        </Heading4> */}
+        <div className="mb-[60px] flex flex-col items-center justify-center gap-[30px]">
+                    <Heading2  className=" text-center ">
+                        <span className="text-primary">Etarath </span>
+                        <br />
+                        Terms & Conditions
+        
+                    </Heading2>
+                    <Paragraph
+                        className="text-center  max-w-[730px]"
+                    >
+                       Etarath is a B2B tyre marketplace connecting verified vendors and retailers.
+These Terms & Conditions govern your use of the platform and its services.
+</Paragraph>
+        </div>
 
         {/* 1. Introduction */}
         <div className="space-y-3 mb-8">

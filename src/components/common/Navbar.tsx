@@ -4,8 +4,11 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import gsap from "gsap";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const PATH_NAME = usePathname();
+
   const menuRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -73,10 +76,16 @@ const Navbar = () => {
 
   /* Navbar Reveal Animation */
   useEffect(() => {
-    if (!navbarRef.current || !logoRef.current || !buttonRef.current || !hamburgerRef.current) return;
+    if (
+      !navbarRef.current ||
+      !logoRef.current ||
+      !buttonRef.current ||
+      !hamburgerRef.current
+    )
+      return;
 
     const tl = gsap.timeline();
-    
+
     // Set initial states
     gsap.set([logoRef.current, buttonRef.current, hamburgerRef.current], {
       y: -50,
@@ -89,7 +98,7 @@ const Navbar = () => {
         opacity: 0,
         scale: 0.9,
       });
-      
+
       // Set initial state for menu links
       const menuLinks = menuRef.current.querySelectorAll("a");
       gsap.set(menuLinks, {
@@ -98,11 +107,8 @@ const Navbar = () => {
       });
     }
 
-   ;
-
     // Animate logo
-    tl
-    .to(logoRef.current, {
+    tl.to(logoRef.current, {
       y: 0,
       opacity: 1,
       zIndex: 202,
@@ -110,36 +116,47 @@ const Navbar = () => {
       delay: 0.2,
       ease: "power2.out",
     })
-    // Animate desktop menu
-    .to(menuRef.current, {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 0.7,
-      ease: "ease",
-    }, "-=0.6");
+      // Animate desktop menu
+      .to(
+        menuRef.current,
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          ease: "ease",
+        },
+        "-=0.6",
+      );
 
     // Animate menu links with stagger
     if (menuRef.current) {
       const menuLinks = menuRef.current.querySelectorAll("a");
-      tl.to(menuLinks, {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: "power2.out",
-      }, "-=0.1");
+      tl.to(
+        menuLinks,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power2.out",
+        },
+        "-=0.1",
+      );
     }
 
     // Animate button and hamburger
-    tl.to([buttonRef.current, hamburgerRef.current], {
-      y: 0,
-      opacity: 1,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "back.out(1.7)",
-    }, "-=0.3");
-
+    tl.to(
+      [buttonRef.current, hamburgerRef.current],
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
+      },
+      "-=0.3",
+    );
   }, []);
 
   /* Scroll-based navbar enhancement */
@@ -147,17 +164,15 @@ const Navbar = () => {
     if (!navbarRef.current) return;
 
     let lastScrollY = window.scrollY;
-    
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const scrollingDown = currentScrollY > lastScrollY;
       const scrollThreshold = 100;
 
       if (currentScrollY > scrollThreshold) {
-        
-        
         // Slight scale animation on scroll direction change
-        if (scrollingDown !== (lastScrollY > currentScrollY)) {
+        if (scrollingDown !== lastScrollY > currentScrollY) {
           gsap.to(navbarRef.current, {
             scale: scrollingDown ? 0.98 : 1,
             duration: 0.2,
@@ -177,7 +192,7 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -198,43 +213,54 @@ const Navbar = () => {
 
       // Create timeline for opening animation
       const tl = gsap.timeline();
-      
-      tl.to(offcanvas, { 
-        x: 0, 
-        duration: 0.4, 
-        ease: "power3.out" 
-      })
-      .to(offcanvasLinks, {
+
+      tl.to(offcanvas, {
         x: 0,
-        opacity: 1,
         duration: 0.4,
-        stagger: 0.1,
-        ease: "back.out(1.7)",
-      }, "-=0.2")
-      .to(offcanvasButton, {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        ease: "back.out(1.7)",
-      }, "-=0.3");
+        ease: "power3.out",
+      })
+        .to(
+          offcanvasLinks,
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.4,
+            stagger: 0.1,
+            ease: "back.out(1.7)",
+          },
+          "-=0.2",
+        )
+        .to(
+          offcanvasButton,
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            ease: "back.out(1.7)",
+          },
+          "-=0.3",
+        );
 
       window.document.body.style.overflow = "hidden";
     } else {
       // Closing animation
       const tl = gsap.timeline();
-      
+
       tl.to([offcanvasLinks, offcanvasButton], {
         x: 30,
         opacity: 0,
         duration: 0.2,
         stagger: 0.05,
         ease: "power2.in",
-      })
-      .to(offcanvas, { 
-        x: "100%", 
-        duration: 0.3, 
-        ease: "power3.in" 
-      }, "-=0.1");
+      }).to(
+        offcanvas,
+        {
+          x: "100%",
+          duration: 0.3,
+          ease: "power3.in",
+        },
+        "-=0.1",
+      );
 
       window.document.body.style.overflow = "";
     }
@@ -242,7 +268,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div 
+      <div
         ref={navbarRef}
         className="relative w-full flex items-center justify-between p-5 md:px-[30px] lg:px-[60px] md:py-[25px] transition-all duration-300 ease-in-out"
       >
@@ -266,12 +292,32 @@ const Navbar = () => {
           <div className="navbar_menu absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <div
               ref={menuRef}
-              className="relative hidden md:flex items-center justify-center gap-10 text-[16px] font-[600] rounded-full bg-[#1E1F21] md:px-10 lg:px-[78px] py-[15px] cursor-none overflow-hidden transition-all duration-300 ease-in-out"
+              className="relative hidden md:flex items-center justify-center gap-[5px] text-[16px] font-[600] rounded-full bg-[#1E1F21] p-[10px]  overflow-hidden transition-all duration-300 ease-in-out"
             >
-              <Link className="cursor-none" href={"/about"}>About</Link>
-              <Link className="cursor-none" href={"/pricing"}>Pricings</Link>
-              <Link className="cursor-none" href={"/blog"}>Blog</Link>
-              <Link className="cursor-none" href={"/contact"}>Contact</Link>
+              <Link
+                className={`min-w-[100px] text-center py-[5px] ${!["/about", "/pricing", "/blog", "/contact"].includes(PATH_NAME) ? "hover:bg-white hover:text-black" : ""} rounded-full transition-all duration-300 ease-in-out ${PATH_NAME === "/about" ? "bg-white text-black" : ""}`}
+                href={"/about"}
+              >
+                About
+              </Link>
+              <Link
+                className={`min-w-[100px] text-center py-[5px] ${!["/about", "/pricing", "/blog", "/contact"].includes(PATH_NAME) ? "hover:bg-white hover:text-black" : ""} rounded-full transition-all duration-300 ease-in-out ${PATH_NAME === "/pricing" ? "bg-white text-black" : ""}`}
+                href={"/pricing"}
+              >
+                Pricings
+              </Link>
+              <Link
+                className={`min-w-[100px] text-center py-[5px] ${!["/about", "/pricing", "/blog", "/contact"].includes(PATH_NAME) ? "hover:bg-white hover:text-black" : ""} rounded-full transition-all duration-300 ease-in-out ${PATH_NAME === "/blog" ? "bg-white text-black" : ""}`}
+                href={"/blog"}
+              >
+                Blog
+              </Link>
+              <Link
+                className={`min-w-[100px] text-center py-[5px] ${!["/about", "/pricing", "/blog", "/contact"].includes(PATH_NAME) ? "hover:bg-white hover:text-black" : ""} rounded-full transition-all duration-300 ease-in-out ${PATH_NAME === "/contact" ? "bg-white text-black" : ""}`}
+                href={"/contact"}
+              >
+                Contact
+              </Link>
             </div>
           </div>
 
@@ -334,17 +380,17 @@ const Navbar = () => {
                 className="!hidden md:!inline-flex"
                 textColor="black"
               >
-                Become a Vendor
+                Get Started
               </Button>
             </div>
           </div>
         </div>
 
         {/* Cursor */}
-        <div
+        {/* <div
           ref={cursorRef}
           className="fixed top-0 left-0 w-6 h-6 rounded-full bg-white/40 pointer-events-none"
-        ></div>
+        ></div> */}
       </div>
 
       {/* Offcanvas */}
@@ -369,7 +415,13 @@ const Navbar = () => {
             Contact
           </Link>
         </div>
-        <Button type="link" href="/quick-start"  onClick={() => setMenuOpen(false)} className="" textColor="black">
+        <Button
+          type="link"
+          href="/quick-start"
+          onClick={() => setMenuOpen(false)}
+          className=""
+          textColor="black"
+        >
           Get Started
         </Button>
       </div>

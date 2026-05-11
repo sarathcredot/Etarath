@@ -196,21 +196,23 @@ const Banner = () => {
 
     return (
         <div>
-            <div>
-                <Heading1 ref={heading1Ref} className=" text-center mb-[30px]">
+            <div className="mb-[60px] flex flex-col items-center justify-center gap-[30px]">
+                <Heading2 ref={heading1Ref} className=" text-center ">
                     {/* Introducing <span className="text-primary">Etarath </span>
           <br /> for you, a b2B tyre selling
           <br className="max-md:hidden " /> platform */}
-                    The <span className="text-primary">UAE’s </span> Ultimate
+                    {/* The <span className="text-primary">UAE’s </span> Ultimate
                     <br />
-                    B2B Tyre Marketplace
-                </Heading1>
-                <SubHeading1
+                    B2B Tyre Marketplace */}
+                    The Etarath Insights
+                </Heading2>
+                <Paragraph
                     ref={subHeading1Ref}
-                    className="text-center mb-[40px] md:mx-[10%] lg:mx-[16%]"
+                    className="text-center  max-w-[730px]"
                 >
-                    The Etarath Blog
-                </SubHeading1>
+                    {/* The Etarath Blog */}
+                    The Etarath news and blogs.
+                </Paragraph>
 
             </div>
 
@@ -248,11 +250,17 @@ const Banner = () => {
         lg:text-left
       "
                     >
-                        <Paragraph className="text-sm opacity-70 mb-3">
-                            <BsClock className="inline-block mr-1" /> {slides[index].time}
-                        </Paragraph>
+                        {/* <Paragraph className="text-sm opacity-70 mb-3"> */}
+                         <p className="flex items-center gap-[10px] text-[14px] font-[400]  mb-[15px]">
 
-                        <Heading4 className="
+                            <BsClock className="inline-block" /> {slides[index].time}
+                         </p>
+                        {/* </Paragraph> */}
+
+                        <h4 className="text-[31px] md:text-[33px] lg:text-[35px] font-[600] font-jakarta">
+                            {slides[index].title}
+                        </h4>
+                        {/* <Heading4 className="
         text-xl
         sm:text-2xl
         md:text-3xl
@@ -262,23 +270,23 @@ const Banner = () => {
         
       ">
                             {slides[index].title}
-                        </Heading4>
+                        </Heading4> */}
 
                         {/* Author */}
                         <div className="
-        flex items-center gap-3 mt-6
+        flex items-center gap-[10px] mt-5 md:mt-[30px]
         justify-center lg:justify-start
       ">
                             <img
                                 src={slides[index].authorImage}
                                 alt={slides[index].author}
-                                className="w-9 h-9 rounded-full object-cover"
+                                className="min-w-10 min-h-10 w-10 h-10 rounded-full object-cover"
                             />
 
-                            <div className="text-sm text-left">
-                                <Paragraph className="opacity-60">Founding CEO</Paragraph>
+                            <div className=" text-left">
+                               <p className=" text-[12px] font-[400]  mb-[5px]">Founding CEO</p>
 
-                                <Paragraph className="font-medium">{slides[index].author}</Paragraph>
+                                <p className=" text-[14px] font-[600] ">{slides[index].author}</p>
                             </div>
                         </div>
                     </div>

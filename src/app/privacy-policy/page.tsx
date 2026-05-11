@@ -46,20 +46,21 @@ function PrivacyPolicyPage() {
 
     return (
         <div className='mb-30'>
-            <Heading2 ref={heading1Ref} className=" text-center mb-[30px]">
+            <div className="mb-[60px] flex flex-col items-center justify-center gap-[30px]">
+            <Heading2 ref={heading1Ref} className=" text-center ">
                 <span className="text-primary">Etarath </span>
                 <br />
                 Privacy Policy
 
             </Heading2>
-            <SubHeading1
+            <Paragraph
                 ref={subHeading1Ref}
-                className="text-center mb-[40px] md:mx-[10%] lg:mx-[16%]"
+                className="text-center  max-w-[730px]"
             >
                 This Privacy Policy explains how Etarath collects, uses, and protects
                 user information. By using the platform, users agree to the data practices described here.
-            </SubHeading1>
-
+            </Paragraph>
+</div>
 
             <section ref={policyRef} className="mt-20">
                 {/* <Heading4 className="text-3xl font-bold mb-6">

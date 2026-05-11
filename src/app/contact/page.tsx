@@ -176,7 +176,8 @@ const Contact = () => {
             x: 0,
             scale: 1,
             duration: 0.6,
-          }, "-=0.3",
+          },
+          "-=0.3",
         )
         .fromTo(
           subHeading1Ref1.current,
@@ -191,7 +192,8 @@ const Contact = () => {
             x: 0,
             scale: 1,
             duration: 0.6,
-          }, "-=0.3",
+          },
+          "-=0.3",
         )
         .fromTo(
           subHeading1Ref2.current,
@@ -206,7 +208,8 @@ const Contact = () => {
             x: 0,
             scale: 1,
             duration: 0.6,
-          }, "-=0.3",
+          },
+          "-=0.3",
         )
         .fromTo(
           heading7Ref.current,
@@ -221,7 +224,8 @@ const Contact = () => {
             x: 0,
             scale: 1,
             duration: 0.6,
-          }, "-=0.5",
+          },
+          "-=0.5",
         )
         .fromTo(
           iconRef1.current,
@@ -237,7 +241,7 @@ const Contact = () => {
             scale: 1,
             duration: 0.3,
           },
-           "-=0.5",
+          "-=0.5",
         )
         .fromTo(
           iconRef2.current,
@@ -253,7 +257,7 @@ const Contact = () => {
             scale: 1,
             duration: 0.3,
           },
-           "-=0.5",
+          "-=0.5",
         )
         .fromTo(
           iconRef3.current,
@@ -269,7 +273,7 @@ const Contact = () => {
             scale: 1,
             duration: 0.3,
           },
-           "-=0.5",
+          "-=0.5",
         )
         .fromTo(
           iconRef4.current,
@@ -297,7 +301,7 @@ const Contact = () => {
             opacity: 1,
             duration: 0.6,
           },
-           "-=0.8",
+          "-=0.8",
         )
         .fromTo(
           workingEmailRef.current,
@@ -309,7 +313,7 @@ const Contact = () => {
             opacity: 1,
             duration: 0.6,
           },
-           "-=0.6",
+          "-=0.6",
         )
         .fromTo(
           contactNumberRef.current,
@@ -321,7 +325,7 @@ const Contact = () => {
             opacity: 1,
             duration: 0.6,
           },
-           "-=0.5",
+          "-=0.5",
         )
         .fromTo(
           subjectRef.current,
@@ -333,7 +337,7 @@ const Contact = () => {
             opacity: 1,
             duration: 0.6,
           },
-           "-=0.5",
+          "-=0.5",
         )
         .fromTo(
           descriptionRef.current,
@@ -345,7 +349,7 @@ const Contact = () => {
             opacity: 1,
             duration: 0.6,
           },
-           "-=0.5",
+          "-=0.5",
         )
         .fromTo(
           isAgreedRef.current,
@@ -357,7 +361,7 @@ const Contact = () => {
             opacity: 1,
             duration: 0.6,
           },
-           "-=0.5",
+          "-=0.5",
         )
         .fromTo(
           submitRef.current,
@@ -369,7 +373,6 @@ const Contact = () => {
             opacity: 1,
             duration: 0.6,
           },
-           "-=0.5",
         );
     }, sectionRef);
 

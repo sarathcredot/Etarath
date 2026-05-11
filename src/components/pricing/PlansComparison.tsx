@@ -77,7 +77,7 @@ const PlansComparison = () => {
   const thRef2 = useRef<HTMLDivElement>(null);
   const thRef3 = useRef<HTMLDivElement>(null);
   const thRef4 = useRef<HTMLDivElement>(null);
-
+ 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const table_feature = gsap.utils.toArray(".table_feature");
@@ -186,7 +186,7 @@ const PlansComparison = () => {
             stagger: 0.1,
           },
           "-=1",
-        )
+        );
 
       ScrollTrigger.refresh();
     }, containerRef);
@@ -227,17 +227,29 @@ const PlansComparison = () => {
             {/* <div className="text-orange-500 font-semibold">
              
             </div> */}
-            <Heading7 ref={thRef1} className="col-span-3 text-primary whitespace-nowrap">
+            <Heading7
+              ref={thRef1}
+              className="col-span-3 text-primary whitespace-nowrap"
+            >
               {" "}
               Included Features
             </Heading7>
-            <Heading7 ref={thRef2} className="col-span-2 text-center whitespace-nowrap">
+            <Heading7
+              ref={thRef2}
+              className="col-span-2 text-center whitespace-nowrap"
+            >
               Standard
             </Heading7>
-            <Heading7 ref={thRef3} className="col-span-2 text-center whitespace-nowrap">
+            <Heading7
+              ref={thRef3}
+              className="col-span-2 text-center whitespace-nowrap"
+            >
               Commercial
             </Heading7>
-            <Heading7 ref={thRef4} className="col-span-2 text-center whitespace-nowrap">
+            <Heading7
+              ref={thRef4}
+              className="col-span-2 text-center whitespace-nowrap"
+            >
               Corporate
             </Heading7>
           </div>
@@ -254,7 +266,7 @@ const PlansComparison = () => {
 
               <div className="col-span-2 flex justify-center py-4 border-r border-[#E2EDFF]  h-full">
                 {feature.standard && (
-                  <GoCheckCircleFill  className="table_check1 w-5 h-5 text-white" />
+                  <GoCheckCircleFill className="table_check1 w-5 h-5 text-white" />
                 )}
               </div>
 
