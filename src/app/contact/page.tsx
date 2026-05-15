@@ -23,6 +23,7 @@ import Input from "@/components/form-fields/Input";
 import TextArea from "@/components/form-fields/TextArea";
 import Select from "@/components/form-fields/Select";
 import Checkbox from "@/components/form-fields/Checkbox";
+import { submitContactForm } from "@/services/contact";
 
 const questions = [
   {
@@ -111,25 +112,25 @@ const Contact = () => {
       contact_number: Yup.string().required("Contact number is required"),
       subject: Yup.string().required("Subject is required"),
       description: Yup.string().required("Ticket Description is required"),
+      isAgreed: Yup.boolean()
+        .oneOf([true], "You must agree to data collection and storage")
+        .required("You must agree to data collection and storage"),
     }),
-    onSubmit: async (values) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      const toastId = toast.loading("Sending your message...");
       try {
-        toast.loading("Loading");
-        // const res = await submitCustomerRequest(values);
-        // if (res) {
-        //   toast.dismiss();
-        // toastSuccess(res);
-        //   formik.resetForm();
-        // }
+        const res = await submitContactForm(values);
+        toast.dismiss(toastId);
+        toastSuccess(res?.message ?? "Your message has been sent successfully.");
+        resetForm();
       } catch (error) {
-        toast.dismiss();
-        console.log(error);
+        toast.dismiss(toastId);
         toastError(error);
+      } finally {
+        setSubmitting(false);
       }
     },
   });
-  console.log("formik values", formik.values);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -553,8 +554,9 @@ const Contact = () => {
               color="primary"
               textColor="black"
               variant="solid"
+              disabled={formik.isSubmitting}
             >
-              Send Message
+              {formik.isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </div>
         </form>
