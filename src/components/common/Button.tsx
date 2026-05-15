@@ -13,6 +13,9 @@ type ButtonProps = {
   disabled?: boolean;
   type?: "button" | "link" | "submit" | "reset";
   href?: string;
+  /** Passed through when `type` is `"link"` (Next.js `Link`). */
+  target?: React.HTMLAttributeAnchorTarget;
+  rel?: string;
 };
 
 const button = cva(
@@ -62,15 +65,22 @@ const Button = forwardRef<
       type = "button",
       href = "/",
       children,
+      target,
+      rel,
     },
     ref
   ) => {
+    const linkRel =
+      rel ?? (target === "_blank" ? "noopener noreferrer" : undefined);
+
     return type === "link" ? (
       <Link
         href={href}
         ref={ref as React.Ref<HTMLAnchorElement>}
         className={`${button({ variant, color, textColor })} ${className}`}
         onClick={onClick}
+        target={target}
+        rel={linkRel}
       >
         {children}{" "}
         <span className="max-md:hidden absolute top-[6px] right-[6px] p-0 group-hover:translate-x-[60px] transition-transform duration-500 ease-in-out">

@@ -87,9 +87,9 @@ const Banner = () => {
             textColor="black"
             className="whitespace-nowrap"
           >
-            Become a Vendor
+            Get Started
           </Button>
-          <Button type="link" href="/" variant="outline" color="primary" className="whitespace-nowrap">
+          <Button type="link" href="https://calendly.com/etarath/demo" target="_blank" variant="outline" color="primary" className="whitespace-nowrap">
             Book a Demo
           </Button>
         </div>
