@@ -15,9 +15,15 @@ interface FAQComponentProps {
     question: string;
     answer: string | React.ReactNode;
   }[];
+  heading?: React.ReactNode;
+  description?: string;
 }
 
-const FAQComponent = ({ questions }: FAQComponentProps) => {
+const FAQComponent = ({
+  questions,
+  heading,
+  description,
+}: FAQComponentProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heading2Ref = useRef<HTMLDivElement>(null);
   const paragraphRef = useRef<HTMLDivElement>(null);
@@ -77,16 +83,19 @@ const FAQComponent = ({ questions }: FAQComponentProps) => {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10 md:gap-[60px]">
         <div className="lg:w-[47%] flex flex-col items-start justify-start">
           <Heading2 ref={heading2Ref} className="mb-[30px]">
-            {/* Benefits of Becoming an 
-            <span className="text-primary">Etarath</span> Retailer */}
-            Frequently asked
-            <br className="hidden md:block " /> Questions
+            {heading ?? (
+              <>
+                Frequently asked
+                <br className="hidden md:block " /> Questions
+              </>
+            )}
           </Heading2>
-          <Paragraph ref={paragraphRef} className="mb-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor
-            sit amet, consectetur adipiscing elit.
-          </Paragraph>
+          {description === "" ? null : (
+            <Paragraph ref={paragraphRef} className="mb-10">
+              {description ??
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Sed ipsum dolor sit amet, consectetur adipiscing elit."}
+            </Paragraph>
+          )}
           <Button
             ref={buttonRef}
             type="link"

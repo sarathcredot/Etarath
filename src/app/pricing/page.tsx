@@ -17,38 +17,25 @@ import Heading3 from "@/components/common/Heading3";
 import PlansComparison from "@/components/pricing/PlansComparison";
 const questions = [
   {
-    question: "Is there a minimum order quantity?",
+    question: "How do orders and payments work?",
     answer:
-      "No. Etarath does not impose any minimum order quantity. Whether you're placing a small retail order or a large bulk purchase, the platform is flexible enough to support transactions of any size.",
+      "All product orders and payments are handled directly between vendors and retailers. Etarath.ai provides the platform for connection, but the transaction process—including order confirmation, payment collection, and delivery—is managed by the vendor.",
   },
   {
-    question: "What if my vendor doesn't answer my call?",
+    question: "Can I customize my plan?",
     answer:
-      "If your vendor is unavailable, you can connect directly with your assigned Etarath sales executive through the platform. Your sales executive will assist you with updates or help place your order.",
+      "Depending on your business nature and number of stores, the subscription can be customized through the support of our team.",
   },
   {
-    question: "How do I submit a claim?",
-    answer: (
-      <>
-        Submitting a claim on Etarath is straightforward. From your dashboard,
-        navigate to the Warranty and Claims section and complete the claim
-        request form with all relevant details. For assistance contact{" "}
-        <a href="mailto:support@etarath.ai" className="text-primary">
-          support@etarath.ai
-        </a>
-        .
-      </>
-    ),
+    question: "How do I get more salesman applications access?",
+    answer:
+      "Etarath will give custom plans for the vendors depending on their team and operation model.",
   },
   {
-    question: "Is Etarath available outside the UAE?",
+    question:
+      "Should I need to create different accounts for my different branches? (Retailer)",
     answer:
-      "Currently Etarath operates within the UAE market. Expansion across GCC is part of our roadmap.",
-  },
-  {
-    question: "Is my business data secure?",
-    answer:
-      "Absolutely. Etarath is built with strict data security standards ensuring that all business data and transactions remain protected.",
+      "Etarath will handle different profiles for different stores through different accounts only.",
   },
 ];
 
@@ -416,7 +403,11 @@ const Pricing = () => {
 
       <PlansComparison />
 
-      <FAQComponent questions={questions} />
+      <FAQComponent
+        heading="Common Questions about Pricing"
+        description=""
+        questions={questions}
+      />
     </div>
   );
 };
