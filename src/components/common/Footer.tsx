@@ -6,7 +6,7 @@ import Paragraph from "./Paragraph";
 import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
-import { FaDribbble, FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io5";
 import gsap from "gsap";
@@ -130,18 +130,33 @@ const Footer = () => {
             </Link>
           </div>
           <div className="flex items-center justify-center max-md:mt-2 gap-5">
-            <div className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out">
-              <FaFacebookF size={16} />
-            </div>
-            <div className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out">
+            <a
+              href="https://www.linkedin.com/company/etarath/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out"
+            >
+              <FaLinkedinIn size={16} />
+            </a>
+            <a
+              href="https://x.com/etarathofficial?s=21"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X"
+              className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out"
+            >
               <FaXTwitter size={16} />
-            </div>
-            <div className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out">
-              <FaDribbble size={16} />
-            </div>
-            <div className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out">
+            </a>
+            <a
+              href="https://www.instagram.com/etarath.ai?igsh=anlrZXE2dXR2cg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out"
+            >
               <IoLogoInstagram size={16} />
-            </div>
+            </a>
           </div>
         </div>
       </div>

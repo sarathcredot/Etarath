@@ -12,7 +12,7 @@ import Heading2 from "@/components/common/Heading2";
 import Heading4 from "@/components/common/Heading4";
 import SubHeading1 from "@/components/common/Subheading1";
 import Heading7 from "@/components/common/Heading7";
-import { FaDribbble, FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io5";
 import { toastError, toastSuccess } from "@/utils/toast";
@@ -83,10 +83,9 @@ const Contact = () => {
   const subHeading1Ref1 = useRef<HTMLDivElement>(null);
   const subHeading1Ref2 = useRef<HTMLDivElement>(null);
   const heading7Ref = useRef<HTMLDivElement>(null);
-  const iconRef1 = useRef<HTMLDivElement>(null);
-  const iconRef2 = useRef<HTMLDivElement>(null);
-  const iconRef3 = useRef<HTMLDivElement>(null);
-  const iconRef4 = useRef<HTMLDivElement>(null);
+  const iconRef1 = useRef<HTMLAnchorElement>(null);
+  const iconRef2 = useRef<HTMLAnchorElement>(null);
+  const iconRef3 = useRef<HTMLAnchorElement>(null);
   const fullNameRef = useRef<HTMLDivElement>(null);
   const workingEmailRef = useRef<HTMLDivElement>(null);
   const contactNumberRef = useRef<HTMLDivElement>(null);
@@ -277,22 +276,6 @@ const Contact = () => {
           "-=0.5",
         )
         .fromTo(
-          iconRef4.current,
-          {
-            opacity: 0,
-            x: -60,
-            scale: 0.9,
-            duration: 0.3,
-          },
-          {
-            opacity: 1,
-            x: 0,
-            scale: 1,
-            duration: 0.3,
-          },
-          "-=0.3",
-        )
-        .fromTo(
           fullNameRef.current,
           {
             opacity: 0,
@@ -416,30 +399,36 @@ const Contact = () => {
               +971 52816 8194
             </Heading7>
             <div className="flex items-center  max-md:mt-2 gap-[5px] ">
-              <div
+              <a
                 ref={iconRef1}
+                href="https://www.linkedin.com/company/etarath/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out"
               >
-                <FaFacebookF size={16} />
-              </div>
-              <div
+                <FaLinkedinIn size={16} />
+              </a>
+              <a
                 ref={iconRef2}
+                href="https://x.com/etarathofficial?s=21"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
                 className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out"
               >
                 <FaXTwitter size={16} />
-              </div>
-              <div
+              </a>
+              <a
                 ref={iconRef3}
-                className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out"
-              >
-                <FaDribbble size={16} />
-              </div>
-              <div
-                ref={iconRef4}
+                href="https://www.instagram.com/etarath.ai?igsh=anlrZXE2dXR2cg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="w-11 h-11 grid place-content-center border border-white hover:border-primary hover:bg-primary cursor-pointer rounded-full transition-all duration-300 ease-in-out"
               >
                 <IoLogoInstagram size={16} />
-              </div>
+              </a>
             </div>
           </div>
         </div>
