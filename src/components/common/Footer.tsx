@@ -122,7 +122,7 @@ const Footer = () => {
             <Link href={"/pricing"} className="">
               Pricing
             </Link>
-            <Link href={"/bolg"} className="">
+            <Link href={"/blog"} className="">
               Blog
             </Link>
             <Link href={"/contact"} className="">
