@@ -89,7 +89,14 @@ const Banner = () => {
           >
             Get Started
           </Button>
-          <Button type="link" href="https://calendly.com/etarath/demo" target="_blank" variant="outline" color="primary" className="whitespace-nowrap">
+          <Button
+            type="link"
+            href={process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/etarath/demo"}
+            target="_blank"
+            variant="outline"
+            color="primary"
+            className="whitespace-nowrap"
+          >
             Book a Demo
           </Button>
         </div>
