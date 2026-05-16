@@ -399,17 +399,21 @@ const Contact = () => {
           </Heading4>
           <div>
             <SubHeading1 ref={subHeading1Ref1}>
-              Etarath Powered by Vieomi Network FZ LLC <br />
-              FDRK8399 Compass Building, Al
-              <br /> Shohada Road, AL Hamra Industrial
-              <br /> Zone-FZ Ras Al Khaimah,
-              <br /> United Arab Emirates
+              Etarath
+              <br />
+              Powered by Vieomi Network FZ LLC
+              <br />
+              FDRK8399 Compass Building,
+              <br />
+              Al Shohada Road, AL Hamra Industrial Zone-FZ
+              <br />
+              Ras Al Khaimah, United Arab Emirates
             </SubHeading1>
             <SubHeading1 ref={subHeading1Ref2} className="my-[15px]">
               support@etarath.ai
             </SubHeading1>
             <Heading7 ref={heading7Ref} className="mb-[25px]">
-              +971 551721265
+              +971 52816 8194
             </Heading7>
             <div className="flex items-center  max-md:mt-2 gap-[5px] ">
               <div
