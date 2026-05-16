@@ -376,7 +376,7 @@ const Navbar = () => {
             <div ref={buttonRef}>
               <Button
                 type="link"
-                href="/quick-start"
+                href="/get-started"
                 className="!hidden md:!inline-flex"
                 textColor="black"
               >
@@ -417,7 +417,7 @@ const Navbar = () => {
         </div>
         <Button
           type="link"
-          href="/quick-start"
+          href="/get-started"
           onClick={() => setMenuOpen(false)}
           className=""
           textColor="black"

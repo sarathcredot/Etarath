@@ -81,7 +81,7 @@ const Banner = () => {
         >
           <Button
             type="link"
-            href="https://vpanel.etarath.ai/"
+            href="/get-started"
             variant="solid"
             color="primary"
             textColor="black"

@@ -10,7 +10,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import Heading2 from "@/components/common/Heading2";
 
-const QuickStart = () => {
+const GetStarted = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const paragraphRef = useRef<HTMLDivElement>(null);
@@ -245,4 +245,4 @@ const QuickStart = () => {
   );
 };
 
-export default QuickStart;
+export default GetStarted;
