@@ -1,40 +1,51 @@
-import BlogCard from "./BlogCard";
-import Heading1 from "../common/Heading1";
-import Heading2 from "../common/Heading2";
-import Heading3 from "../common/Heading3";
-import Paragraph from "../common/Paragraph";
+"use client";
 
-import SubHeading1 from "../common/Subheading1";
+import { useState } from "react";
+import BlogCard from "./BlogCard";
 import Heading4 from "../common/Heading4";
 import Button from "../common/Button";
+import type { Blog } from "@/types/blog";
 
-export default function BlogGrid() {
+const PAGE_SIZE = 6;
 
+interface BlogGridProps {
+  blogs: Blog[];
+}
 
+export default function BlogGrid({ blogs }: BlogGridProps) {
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const visibleBlogs = blogs.slice(0, visibleCount);
+  const hasMore = visibleCount < blogs.length;
+
+  if (blogs.length === 0) {
     return (
-        <div>
-            <Heading4 className="text-2xl font-semibold mb-8">
-                More Insights
-            </Heading4>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[1, 2, 3, 4, 5, 6].map((item) => (
-                    <BlogCard key={item} />
-                ))}
-            </div>
-
-            <div className="flex justify-center mt-10 mb-10">
-
-                <Button
-                    type="link"
-                    href="/"
-                    variant="solid"
-                    color="primary"
-                    textColor="black"
-                >
-                    Load More
-                </Button>
-            </div>
-        </div>
+      <p className="text-sm text-gray-400">No blogs match your filters.</p>
     );
+  }
+
+  return (
+    <div>
+      <Heading4 className="text-2xl font-semibold mb-8">More Insights</Heading4>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {visibleBlogs.map((blog) => (
+          <BlogCard key={blog._id} blog={blog} />
+        ))}
+      </div>
+
+      {hasMore && (
+        <div className="flex justify-center mt-10 mb-10">
+          <Button
+            type="button"
+            variant="solid"
+            color="primary"
+            textColor="black"
+            onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
+          >
+            Load More
+          </Button>
+        </div>
+      )}
+    </div>
+  );
 }

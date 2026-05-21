@@ -1,21 +1,19 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import Heading1 from "../common/Heading1";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Heading2 from "../common/Heading2";
-import Heading3 from "../common/Heading3";
 import Paragraph from "../common/Paragraph";
-import { BsClock } from "react-icons/bs";
-
-
-import SubHeading1 from "../common/Subheading1";
-import Button from "../common/Button";
-import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import Heading4 from "../common/Heading4";
+import type { Blog } from "@/types/blog";
+import { formatBlogDate } from "@/lib/blog";
 
-const Banner = () => {
+interface BannerProps {
+  blogs: Blog[];
+}
+
+const Banner = ({ blogs }: BannerProps) => {
     const heading1Ref = useRef<HTMLDivElement>(null);
     const subHeading1Ref = useRef<HTMLDivElement>(null);
     const buttonContainerRef = useRef<HTMLDivElement>(null);
@@ -64,39 +62,13 @@ const Banner = () => {
         };
     }, []);
 
-    const slides = [
-        {
-            image: "/images/home/banner_img.webp",
-            title: "Why Hiring a Sales Agent Costs You $350K",
-            author: "Shameer",
-            authorImage: "/images/avatars/avatar_1.webp",
-            time: "9 minutes",
-        },
-        {
-            image: "/images/home/banner_img.webp",
-            title: "How Founders Waste Money on Sales",
-            author: "John",
-            authorImage: "/images/avatars/avatar_2.webp",
-
-            time: "7 minutes",
-        },
-        {
-            image: "/images/home/banner_img.webp",
-            title: "How Founders Waste Money on Sales",
-            author: "John",
-            authorImage: "/images/avatars/avatar_3.webp",
-
-            time: "7 minutes",
-        },
-        {
-            image: "/images/home/banner_img.webp",
-            title: "How Founders Waste Money on Sales",
-            author: "John",
-            authorImage: "/images/avatars/avatar_4.webp",
-
-            time: "7 minutes",
-        },
-    ];
+    const slides = useMemo(
+        () =>
+            [...blogs]
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                .slice(0, 4),
+        [blogs]
+    );
 
     const imageRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -106,12 +78,14 @@ const Banner = () => {
 
 
     useEffect(() => {
+        if (slides.length <= 1) return;
+
         const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % slides.length);
         }, AUTO_SLIDE_DELAY);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [slides.length]);
 
     // useEffect(() => {
     //     const ctx = gsap.context(() => {
@@ -194,6 +168,10 @@ const Banner = () => {
         return () => ctx.revert();
     }, [index]);
 
+    if (slides.length === 0) return null;
+
+    const currentSlide = slides[index];
+
     return (
         <div>
             <div className="mb-[60px] flex flex-col items-center justify-center gap-[30px]">
@@ -217,78 +195,32 @@ const Banner = () => {
             </div>
 
             <div className="mb-20">
-                {/* Slider */}
                 <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
-                    {/* Image */}
-                    <div
+                    <Link
+                        href={`/blog/${currentSlide._id}`}
                         ref={imageRef}
-                        className="
-        w-full
-        max-w-[1000px]
-        h-[220px]
-        sm:h-[320px]
-        md:h-[420px]
-        lg:h-[501px]
-        rounded-2xl
-        overflow-hidden
-      "
+                        className="w-full max-w-[1000px] h-[220px] sm:h-[320px] md:h-[420px] lg:h-[501px] rounded-2xl overflow-hidden block"
                     >
                         <img
-                            src={slides[index].image}
+                            src={currentSlide.imgUrl}
                             className="w-full h-full object-cover"
-                            alt="blog cover"
+                            alt={currentSlide.title}
                         />
-                    </div>
+                    </Link>
 
-                    {/* Content */}
                     <div
                         ref={contentRef}
-                        className="
-        max-w-full
-        lg:max-w-[420px]
-        text-center
-        lg:text-left
-      "
+                        className="max-w-full lg:max-w-[420px] text-center lg:text-left"
                     >
-                        {/* <Paragraph className="text-sm opacity-70 mb-3"> */}
-                         <p className="flex items-center gap-[10px] text-[14px] font-[400]  mb-[15px]">
+                        <p className="text-[14px] font-[400] mb-[15px] uppercase tracking-wide text-gray-300">
+                            {currentSlide.category} • {formatBlogDate(currentSlide.date)}
+                        </p>
 
-                            <BsClock className="inline-block" /> {slides[index].time}
-                         </p>
-                        {/* </Paragraph> */}
-
-                        <h4 className="text-[31px] md:text-[33px] lg:text-[35px] font-[600] font-jakarta">
-                            {slides[index].title}
-                        </h4>
-                        {/* <Heading4 className="
-        text-xl
-        sm:text-2xl
-        md:text-3xl
-        lg:text-[34px]
-        font-semibold
-        leading-tight
-        
-      ">
-                            {slides[index].title}
-                        </Heading4> */}
-
-                        {/* Author */}
-                        <div className="
-        flex items-center gap-[10px] mt-5 md:mt-[30px]
-        justify-center lg:justify-start
-      ">
-                            <img
-                                src={slides[index].authorImage}
-                                alt={slides[index].author}
-                                className="min-w-10 min-h-10 w-10 h-10 rounded-full object-cover"
-                            />
-
-                            <div className=" text-left">
-                               <p className=" text-[12px] font-[400]  mb-[5px]">Founding CEO</p>
-
-                                <p className=" text-[14px] font-[600] ">{slides[index].author}</p>
-                            </div>
-                        </div>
+                        <Link href={`/blog/${currentSlide._id}`}>
+                            <h4 className="text-[31px] md:text-[33px] lg:text-[35px] font-[600] font-jakarta hover:text-primary transition-colors">
+                                {currentSlide.title}
+                            </h4>
+                        </Link>
                     </div>
                 </div>
 
