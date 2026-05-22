@@ -4,18 +4,41 @@ import { useEffect, useState } from "react";
 import BlogBanner from "@/components/blog/Banner";
 import Blogs from "@/components/blog/Blogs";
 import Paragraph from "@/components/common/Paragraph";
-import { getBlogs } from "@/services/blog.service";
+import {
+  getBlogCategories,
+  getBlogTags,
+  getBlogs,
+} from "@/services/blog.service";
 import type { Blog } from "@/types/blog";
 
 function BlogPage() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getBlogs()
-      .then(setBlogs)
-      .catch(() => setBlogs([]))
-      .finally(() => setLoading(false));
+    async function loadBlogData() {
+      try {
+        const blogList = await getBlogs();
+        setBlogs(blogList);
+
+        const [categoryList, tagList] = await Promise.all([
+          getBlogCategories(blogList),
+          getBlogTags(blogList),
+        ]);
+        setCategories(categoryList);
+        setTags(tagList);
+      } catch {
+        setBlogs([]);
+        setCategories([]);
+        setTags([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadBlogData();
   }, []);
 
   if (loading) {
@@ -42,7 +65,7 @@ function BlogPage() {
   return (
     <div>
       <BlogBanner blogs={blogs} />
-      <Blogs blogs={blogs} />
+      <Blogs blogs={blogs} categories={categories} tags={tags} />
     </div>
   );
 }

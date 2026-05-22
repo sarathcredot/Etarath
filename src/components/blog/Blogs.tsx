@@ -9,9 +9,11 @@ import { filterBlogs } from "@/lib/blog";
 
 interface BlogsProps {
   blogs: Blog[];
+  categories: string[];
+  tags: string[];
 }
 
-function BlogsPageLayout({ blogs }: BlogsProps) {
+function BlogsPageLayout({ blogs, categories, tags }: BlogsProps) {
   const [openFilter, setOpenFilter] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -29,6 +31,8 @@ function BlogsPageLayout({ blogs }: BlogsProps) {
 
   const sidebarProps = {
     blogs,
+    categories,
+    tags,
     search,
     selectedTags,
     selectedCategories,

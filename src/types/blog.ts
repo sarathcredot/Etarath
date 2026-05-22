@@ -16,3 +16,23 @@ export interface BlogsApiResponse {
   message: string;
   data: Blog[];
 }
+
+export interface BlogCategoryRecord {
+  categories: string[];
+}
+
+export interface BlogTagRecord {
+  tags: string[];
+}
+
+export interface BlogCategoriesApiResponse {
+  status: number;
+  message: string;
+  data: BlogCategoryRecord[] | string[];
+}
+
+export interface BlogTagsApiResponse {
+  status: number;
+  message: string;
+  data: BlogTagRecord[] | string[];
+}

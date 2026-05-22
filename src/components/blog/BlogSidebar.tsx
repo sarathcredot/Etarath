@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import Paragraph from "../common/Paragraph";
 import { BsSearch } from "react-icons/bs";
 import Link from "next/link";
 import type { Blog } from "@/types/blog";
-import { formatBlogDate, getUniqueCategories, getUniqueTags } from "@/lib/blog";
+import { formatBlogDate } from "@/lib/blog";
 
 interface BlogSidebarProps {
   blogs: Blog[];
+  categories: string[];
+  tags: string[];
   search: string;
   selectedTags: string[];
   selectedCategories: string[];
@@ -19,6 +20,8 @@ interface BlogSidebarProps {
 
 export default function BlogSidebar({
   blogs,
+  categories,
+  tags,
   search,
   selectedTags,
   selectedCategories,
@@ -26,8 +29,6 @@ export default function BlogSidebar({
   onTagsChange,
   onCategoriesChange,
 }: BlogSidebarProps) {
-  const allTags = getUniqueTags(blogs);
-  const allCategories = getUniqueCategories(blogs);
   const recentPosts = [...blogs]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
@@ -67,14 +68,14 @@ export default function BlogSidebar({
           </div>
         </div>
 
-        {allCategories.length > 0 && (
+        {categories.length > 0 && (
           <div>
             <Paragraph className="text-sm font-medium mb-4">
               Categories
             </Paragraph>
 
             <ul className="space-y-3 text-sm cursor-pointer text-gray-300">
-              {allCategories.map((category) => (
+              {categories.map((category) => (
                 <li
                   onClick={() => handleCategoryClick(category)}
                   key={category}
@@ -125,12 +126,12 @@ export default function BlogSidebar({
           </div>
         )}
 
-        {allTags.length > 0 && (
+        {tags.length > 0 && (
           <div>
             <Paragraph className="text-sm font-medium mb-4">Tags</Paragraph>
 
             <div className="flex flex-wrap gap-2">
-              {allTags.map((tag) => {
+              {tags.map((tag) => {
                 const isSelected = selectedTags.includes(tag);
 
                 return (

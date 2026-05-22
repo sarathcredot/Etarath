@@ -13,7 +13,11 @@ import {
 } from "react-icons/bs";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Link from "next/link";
-import { getBlogs } from "@/services/blog.service";
+import {
+  getBlogCategories,
+  getBlogTags,
+  getBlogs,
+} from "@/services/blog.service";
 import type { Blog } from "@/types/blog";
 import { formatBlogDate } from "@/lib/blog";
 
@@ -23,6 +27,8 @@ function BlogDetails() {
   const blogId = params?.id as string;
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [openFilter, setOpenFilter] = useState(false);
   const [search, setSearch] = useState("");
@@ -30,10 +36,27 @@ function BlogDetails() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    getBlogs()
-      .then(setBlogs)
-      .catch(() => setBlogs([]))
-      .finally(() => setLoading(false));
+    async function loadBlogData() {
+      try {
+        const blogList = await getBlogs();
+        setBlogs(blogList);
+
+        const [categoryList, tagList] = await Promise.all([
+          getBlogCategories(blogList),
+          getBlogTags(blogList),
+        ]);
+        setCategories(categoryList);
+        setTags(tagList);
+      } catch {
+        setBlogs([]);
+        setCategories([]);
+        setTags([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadBlogData();
   }, []);
 
   const sortedBlogs = useMemo(
@@ -61,6 +84,8 @@ function BlogDetails() {
 
   const sidebarProps = {
     blogs,
+    categories,
+    tags,
     search,
     selectedTags,
     selectedCategories,
