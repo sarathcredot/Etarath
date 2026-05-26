@@ -1,11 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { BsFilter } from "react-icons/bs";
 import BlogSidebar from "./BlogSidebar";
 import BlogGrid from "./BlogGrid";
 import type { Blog } from "@/types/blog";
-import { filterBlogs } from "@/lib/blog";
+import {
+  buildBlogFiltersUrl,
+  filterBlogs,
+  parseBlogFilters,
+  type BlogFilters,
+} from "@/lib/blog";
 
 interface BlogsProps {
   blogs: Blog[];
@@ -14,31 +20,37 @@ interface BlogsProps {
 }
 
 function BlogsPageLayout({ blogs, categories, tags }: BlogsProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [openFilter, setOpenFilter] = useState(false);
-  const [search, setSearch] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const filters = useMemo(
+    () => parseBlogFilters(searchParams),
+    [searchParams]
+  );
+
+  const updateFilters = (next: Partial<BlogFilters>) => {
+    router.replace(buildBlogFiltersUrl({ ...filters, ...next }), {
+      scroll: false,
+    });
+  };
 
   const filteredBlogs = useMemo(
-    () =>
-      filterBlogs(blogs, {
-        search,
-        categories: selectedCategories,
-        tags: selectedTags,
-      }),
-    [blogs, search, selectedCategories, selectedTags]
+    () => filterBlogs(blogs, filters),
+    [blogs, filters]
   );
 
   const sidebarProps = {
     blogs,
     categories,
     tags,
-    search,
-    selectedTags,
-    selectedCategories,
-    onSearchChange: setSearch,
-    onTagsChange: setSelectedTags,
-    onCategoriesChange: setSelectedCategories,
+    search: filters.search,
+    selectedTags: filters.tags,
+    selectedCategories: filters.categories,
+    onSearchChange: (search: string) => updateFilters({ search }),
+    onTagsChange: (selectedTags: string[]) => updateFilters({ tags: selectedTags }),
+    onCategoriesChange: (selectedCategories: string[]) =>
+      updateFilters({ categories: selectedCategories }),
   };
 
   return (
@@ -87,4 +99,12 @@ function BlogsPageLayout({ blogs, categories, tags }: BlogsProps) {
   );
 }
 
-export default BlogsPageLayout;
+function Blogs(props: BlogsProps) {
+  return (
+    <Suspense fallback={null}>
+      <BlogsPageLayout {...props} />
+    </Suspense>
+  );
+}
+
+export default Blogs;

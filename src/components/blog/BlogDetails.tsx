@@ -19,7 +19,7 @@ import {
   getBlogs,
 } from "@/services/blog.service";
 import type { Blog } from "@/types/blog";
-import { formatBlogDate } from "@/lib/blog";
+import { formatBlogDate, buildBlogFiltersUrl, type BlogFilters } from "@/lib/blog";
 
 function BlogDetails() {
   const params = useParams();
@@ -31,9 +31,6 @@ function BlogDetails() {
   const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [openFilter, setOpenFilter] = useState(false);
-  const [search, setSearch] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   useEffect(() => {
     async function loadBlogData() {
@@ -86,12 +83,11 @@ function BlogDetails() {
     blogs,
     categories,
     tags,
-    search,
-    selectedTags,
-    selectedCategories,
-    onSearchChange: setSearch,
-    onTagsChange: setSelectedTags,
-    onCategoriesChange: setSelectedCategories,
+    search: "",
+    selectedTags: [],
+    selectedCategories: [],
+    onFilterApply: (filters: BlogFilters) =>
+      router.push(buildBlogFiltersUrl(filters)),
   };
 
   if (loading) {

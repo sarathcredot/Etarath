@@ -1,10 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Paragraph from "../common/Paragraph";
 import { BsSearch } from "react-icons/bs";
 import Link from "next/link";
 import type { Blog } from "@/types/blog";
-import { formatBlogDate } from "@/lib/blog";
+import { formatBlogDate, type BlogFilters } from "@/lib/blog";
 
 interface BlogSidebarProps {
   blogs: Blog[];
@@ -13,9 +14,10 @@ interface BlogSidebarProps {
   search: string;
   selectedTags: string[];
   selectedCategories: string[];
-  onSearchChange: (value: string) => void;
-  onTagsChange: (tags: string[]) => void;
-  onCategoriesChange: (categories: string[]) => void;
+  onSearchChange?: (value: string) => void;
+  onTagsChange?: (tags: string[]) => void;
+  onCategoriesChange?: (categories: string[]) => void;
+  onFilterApply?: (filters: BlogFilters) => void;
 }
 
 export default function BlogSidebar({
@@ -28,23 +30,69 @@ export default function BlogSidebar({
   onSearchChange,
   onTagsChange,
   onCategoriesChange,
+  onFilterApply,
 }: BlogSidebarProps) {
+  const [localSearch, setLocalSearch] = useState(search);
+
+  useEffect(() => {
+    setLocalSearch(search);
+  }, [search]);
+
   const recentPosts = [...blogs]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
+
+  const applyFilters = (filters: BlogFilters) => {
+    if (onFilterApply) {
+      onFilterApply(filters);
+    }
+  };
+
+  const handleSearchSubmit = () => {
+    if (onFilterApply) {
+      applyFilters({
+        search: localSearch,
+        categories: selectedCategories,
+        tags: selectedTags,
+      });
+      return;
+    }
+
+    onSearchChange?.(localSearch);
+  };
 
   const handleTagClick = (tag: string) => {
     const next = selectedTags.includes(tag)
       ? selectedTags.filter((t) => t !== tag)
       : [...selectedTags, tag];
-    onTagsChange(next);
+
+    if (onFilterApply) {
+      applyFilters({
+        search: localSearch,
+        categories: selectedCategories,
+        tags: next,
+      });
+      return;
+    }
+
+    onTagsChange?.(next);
   };
 
   const handleCategoryClick = (category: string) => {
     const next = selectedCategories.includes(category)
       ? selectedCategories.filter((c) => c !== category)
       : [...selectedCategories, category];
-    onCategoriesChange(next);
+
+    if (onFilterApply) {
+      applyFilters({
+        search: localSearch,
+        categories: next,
+        tags: selectedTags,
+      });
+      return;
+    }
+
+    onCategoriesChange?.(next);
   };
 
   return (
@@ -57,14 +105,31 @@ export default function BlogSidebar({
 
           <div className="relative">
             <input
-              value={search}
-              onChange={(e) => onSearchChange(e.target.value)}
+              value={localSearch}
+              onChange={(e) => {
+                const value = e.target.value;
+                setLocalSearch(value);
+                if (!onFilterApply) {
+                  onSearchChange?.(value);
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  handleSearchSubmit();
+                }
+              }}
               placeholder="Search"
               className="w-full bg-transparent border border-gray-600 rounded-full pl-10 pr-4 py-2.5 text-sm outline-none placeholder:text-gray-400"
             />
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+            <button
+              type="button"
+              onClick={handleSearchSubmit}
+              aria-label="Search blogs"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition"
+            >
               <BsSearch />
-            </span>
+            </button>
           </div>
         </div>
 
