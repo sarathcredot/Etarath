@@ -11,10 +11,18 @@ export interface Blog {
   updatedAt: string;
 }
 
+export interface BlogsPaginatedData {
+  data: Blog[];
+  total: number;
+  page: number | null;
+  limit: number | null;
+  hasMore: boolean;
+}
+
 export interface BlogsApiResponse {
   status: number;
   message: string;
-  data: Blog[];
+  data: Blog[] | BlogsPaginatedData;
 }
 
 export interface BlogCategoryRecord {

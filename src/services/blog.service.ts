@@ -34,9 +34,15 @@ function parseTagList(data: unknown): string[] {
   return data.filter((item): item is string => typeof item === "string");
 }
 
+function parseBlogsList(payload: BlogsApiResponse["data"] | undefined): Blog[] {
+  if (!payload) return [];
+  if (Array.isArray(payload)) return payload;
+  return payload.data ?? [];
+}
+
 export async function getBlogs(): Promise<Blog[]> {
   const response = await axios.get<BlogsApiResponse>(BLOGS_URL);
-  const blogs = response?.data?.data ?? [];
+  const blogs = parseBlogsList(response?.data?.data);
   return blogs.filter((blog) => blog.status);
 }
 
